@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles_registro.css">
+    <title>Proyectos de Gestión</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form class="input-registro">
+                <h2>Registro de Usuarios</h2>
+                <span>Use el correo institucional para registrarse</span>
+                <div class="container-input">
+                    <ion-icon name="person-outline" alt="logo-facebook"></ion-icon>
+                    <input type="text" placeholder="Nombres y Apellidos" id="nombres-registro" required>
+                </div>
+                <div class="container-input">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" placeholder="Correo Institucional" id="email-registro" required>
+                </div>
+                <div class="container-input">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" placeholder="Contraseña" id="password-registro" required>
+                </div>
+                <button type="submit"  class="btn btn-principal" id="boton-registro-usuarios">REGISTRARSE</button>
+            </form>
+        </div> 
+        <div class="container-texto">
+            <div class="container-login">
+            <a href="https://www.ucundinamarca.edu.co/" target="_blank"> <img src="/img/escudo-color.png"alt="escudo-universidad-color">  </a>
+                <h3>Proyectos de Gestión de Conocimiento</h3>
+                <p><i>"COGITO ERGO SUM"<br>René Descartes</i></p>
+                <button class="btn" id="boton-ventana-inicio">INICIAR SESIÓN</button>
+            
+            </div>
+        </div>
+    </div>    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="/scripts/script_registro.js" type="module"></script>
+
+</body>
+</html>

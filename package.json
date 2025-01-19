@@ -1,0 +1,28 @@
+{
+  "name": "paginauniversidad",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaus80/PaginaUniversidad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gaus80/PaginaUniversidad/issues"
+  },
+  "homepage": "https://github.com/Gaus80/PaginaUniversidad#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-async-handler": "^1.2.0",
+    "zod": "^3.24.1"
+  }
+}
