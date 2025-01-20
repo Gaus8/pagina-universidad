@@ -1,6 +1,6 @@
 import express from 'express';
-import { registrarUsuario } from '../controllers/controllerUsuarios.js';
+import { registrarUsuario } from '../controllers/controllerRegistro.js';
 
- export const router = express.Router();
+export const router = express.Router();
 
-router.post('/registro',registrarUsuario)
+router.post('/registro', registrarUsuario);
