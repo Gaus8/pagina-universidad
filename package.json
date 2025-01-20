@@ -23,6 +23,17 @@
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "express-async-handler": "^1.2.0",
+    "mongoose": "^8.9.5",
     "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "standard": "^17.1.2"
+  },
+   "eslintConfig": {
+    "extends": "standard",
+    "rules": {
+      "semi":["error","always"],
+      "no-multiple-empty-lines":"off"
+    }
   }
 }
