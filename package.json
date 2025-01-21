@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Gaus80/PaginaUniversidad#readme",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
@@ -29,11 +30,14 @@
   "devDependencies": {
     "standard": "^17.1.2"
   },
-   "eslintConfig": {
+  "eslintConfig": {
     "extends": "standard",
     "rules": {
-      "semi":["error","always"],
-      "no-multiple-empty-lines":"off"
+      "semi": [
+        "error",
+        "always"
+      ],
+      "no-multiple-empty-lines": "off"
     }
   }
 }
