@@ -1,8 +1,11 @@
+
 import asyncHandler from 'express-async-handler';
 import { validateUser } from '../esquema/validateString.js';
 import bcrypt from 'bcrypt';
 
-export const registrarUsuario = asyncHandler(async (req, res) => {
+import User from '../esquema/userSchema.js';
+
+export const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     return res.status(400).json({ message: 'Todos los campos deben ser llenados' });
@@ -10,18 +13,38 @@ export const registrarUsuario = asyncHandler(async (req, res) => {
 
   const validar = validateUser(req.body);
   if (validar.error) {
-    return res.status(400).json({ error: JSON.parse(validar.error.message) });
+    return res.status(400).json({
+      status: 'error',
+      error: JSON.parse(validar.error.message)
+    });
   }
 
-  const hashedPassword = await bcrypt.hash(validar.data.password, 10);
-  const newUser = {
-    name: validar.data.name,
-    email: validar.data.email,
-    password: hashedPassword
-  };
+  try {
+    const hashedPassword = await bcrypt.hash(validar.data.password, 10);
+    const newUser = {
+      name: validar.data.name,
+      email: validar.data.email,
+      password: hashedPassword
+    };
 
-  res.status(201).json({
-    newUser
-  });
+    const sendMessage = await createUser(newUser);
+
+
+
+    res.status(201).json({ status: 'success', message: sendMessage });
+  } catch (error) {
+    res.status(400).json({ status: 'error', message: error.message });
+  }
 });
+
+const createUser = async (user) => {
+  const findUser = await User.findOne({ email: user.email });
+  if (findUser) {
+    throw new Error('ERROR: CORREO YA REGISTRADO!');
+  }
+  const create = await User.create(user);
+  if (create) {
+    return 'USUARIO REGISTRADO EXITOSAMENTE';
+  }
+};
 

@@ -1,11 +1,11 @@
 const botonVentanaInicio = document.getElementById('boton-ventana-inicio');
 const botonRegistroUsuarios = document.getElementById('boton-registro-usuarios');
-const textoError = document.querySelectorAll('.errores');
 const nombreValue = document.getElementById('nombres-registro');
 const emailValue = document.getElementById('email-registro');
 const passwordValue = document.getElementById('password-registro');
 
 const registerUser = async (url, data = {}) => {
+  // RECIBIR DATOS
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -14,19 +14,31 @@ const registerUser = async (url, data = {}) => {
         'Content-Type': 'application/json'
       }
     });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      if (errorData.error) {
-        textoError.forEach(elemento => {
-          elemento.style.display = 'block';
-        });
-      }
-    }
-    const responseData = await response.json();
-    console.log(responseData);
+    validateResponse(response);
   } catch (error) {
-    console.log('ERROR: ', error.message);
+    console.error('ERROR:', error.message);
+    window.alert('Ocurrió un error en la comunicación con el servidor.');
+  }
+};
+
+const validateResponse = async (response) => {
+  const responseData = await response.json();
+  // CREAR USUARIO EXITOSAMENTE
+  if (response.ok) {
+    window.alert(responseData.message);
+    return setTimeout(() => {
+      window.location.href = '/inicio/index.html';
+    }, 2000);
+  }
+
+  if (responseData.status === 'error') {
+    if (Array.isArray(responseData.error)) {
+      responseData.error.forEach(err => {
+        window.alert(err.message); // Mostrar errores específicos
+      });
+    } else {
+      window.alert(responseData.message); // Mostrar error general
+    }
   }
 };
 
@@ -48,4 +60,3 @@ botonVentanaInicio.addEventListener('click', (event) => {
     window.location.href = '/inicio/index.html';
   }, 200);
 });
-
