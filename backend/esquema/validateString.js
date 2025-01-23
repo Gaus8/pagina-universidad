@@ -19,6 +19,11 @@ const userSchema = z.object({
 
 });
 
-export function validateUser (input) {
+export function validateRegisterUser (input) {
   return userSchema.safeParse(input);
 };
+
+export function validateLoginUser (input) {
+  return userSchema.partial().safeParse(input);
+}
+

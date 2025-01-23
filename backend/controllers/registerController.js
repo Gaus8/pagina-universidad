@@ -1,17 +1,19 @@
 
-import asyncHandler from 'express-async-handler';
-import { validateUser } from '../esquema/validateString.js';
+import { validateRegisterUser } from '../esquema/validateString.js';
 import bcrypt from 'bcrypt';
 
 import User from '../esquema/userSchema.js';
 
-export const registerUser = asyncHandler(async (req, res) => {
+export const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
-    return res.status(400).json({ message: 'Todos los campos deben ser llenados' });
+    return res.status(400).json({
+      status: 'error',
+      message: 'Todos los campos deben ser llenados'
+    });
   }
 
-  const validar = validateUser(req.body);
+  const validar = validateRegisterUser(req.body);
   if (validar.error) {
     return res.status(400).json({
       status: 'error',
@@ -29,13 +31,17 @@ export const registerUser = asyncHandler(async (req, res) => {
 
     const sendMessage = await createUser(newUser);
 
-
-
-    res.status(201).json({ status: 'success', message: sendMessage });
+    res.status(201).json({
+      status: 'success',
+      message: sendMessage
+    });
   } catch (error) {
-    res.status(400).json({ status: 'error', message: error.message });
+    res.status(400).json({
+      status: 'error',
+      message: error.message
+    });
   }
-});
+};
 
 const createUser = async (user) => {
   const findUser = await User.findOne({ email: user.email });

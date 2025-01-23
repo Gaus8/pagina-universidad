@@ -27,8 +27,8 @@ const validateResponse = async (response) => {
   if (response.ok) {
     window.alert(responseData.message);
     return setTimeout(() => {
-      window.location.href = '/inicio/index.html';
-    }, 2000);
+      window.location.href = '/';
+    }, 500);
   }
 
   if (responseData.status === 'error') {
@@ -51,12 +51,12 @@ botonRegistroUsuarios.addEventListener('click', async (event) => {
   if (!name || !email || !password) {
     return window.alert('Asegurese de llenar todos lo campos');
   };
-  registerUser('/inicio/registro', { name, email, password });
+  registerUser('/register', { name, email, password });
 });
 
 botonVentanaInicio.addEventListener('click', (event) => {
   event.preventDefault();
   setTimeout(() => {
-    window.location.href = '/inicio/index.html';
+    window.location.href = '/';
   }, 200);
 });
