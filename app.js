@@ -3,7 +3,7 @@ import { routerRegister } from './backend/routes/registerRoutes.js';
 import { routerLogin } from './backend/routes/loginRoutes.js';
 import 'dotenv/config';
 import { connectionDb } from './backend/database/dbConnection.js';
-
+import { routerMainPage } from './backend/routes/mainRoutes.js';
 connectionDb();
 
 const app = express();
@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use('/', routerRegister);
 app.use('/', routerLogin);
-
+app.use('/', routerMainPage);
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 

@@ -14,9 +14,10 @@ const loginUser = async (url, data = {}) => {
 
   const responseData = await response.json();
   if (response.ok) {
+    console.log(responseData.name);
     window.alert(responseData.message);
     return setTimeout(() => {
-      window.location.href = '/registro';
+      window.location.href = '/main';
     }, 500);
   }
 

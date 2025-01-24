@@ -31,12 +31,13 @@ const validateLogin = async (req, res) => {
   if (findUser && checkPassword) {
     res.status(200).json({
       status: 'success',
-      message: 'Ingreso Exitoso'
+      message: 'Ingreso Exitoso',
+      name: findUser.name
     });
-  }else{
+  } else {
     res.status(404).json({
-      status:'error',
+      status: 'error',
       error: 'Email o contraseña incorrectos'
-    })
+    });
   }
 };
