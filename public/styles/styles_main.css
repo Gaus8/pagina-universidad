@@ -18,7 +18,6 @@
 .container{
   width: 100%;
   height: 100%;
-
 }
 
 .header{
@@ -116,7 +115,6 @@ p{
 .fondo-image-img{
   width: 90%;
   height: 100%;
-  border: 2px solid black;
   margin: 0 auto;
   background-image: url('/img/imagen_fondo_universidad.png'); 
   background-size: cover; 
@@ -130,7 +128,7 @@ p{
 }
 
 .fondo-image-text{
-  background-color: var(--color-gris);
+  background-color: var(--color-);
   opacity: 0.9;
   width: 60%;
   height: 200px;
@@ -144,14 +142,38 @@ p{
   margin: 40px auto;
   width:50%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  justify-content: center;
-  align-content: center;
-  border: 2px solid black;
+  grid-template-columns: repeat(3, 0.5fr);
+  align-items: center;
+  justify-items: center;
+  row-gap: 30px;
+  padding: 10px;
+}
+
+.files{
+  border: 2px solid #6b6b6b;
+  padding: 5px;
+  text-align: center; 
+  border-radius: 10px;
+}
+
+.files:hover{
+  border: 2px solid var(--color-verde);
 }
 
 .link-img{
   width: 100px;
   height: 100px;
+}
+
+
+@media screen and (max-width: 720px) {
+  .link-files{
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+    row-gap: 30px;
+    padding: 10px;
+  }
 }
