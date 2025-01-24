@@ -1,19 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="/styles/styles_main.css">
+  <title>Proyectos de Gestión</title>
 </head>
-<body>
 
-  <% data.forEach(user => { %>
-    <div class="container">
-      <span><%=user.name%> </span><br>
-      <span><%=user.email %></span>
+<body>
+  <div class="container">
+    <header class="header">
+      <nav class="navigation-bar">
+        <div class="image">
+          <a href="https://www.ucundinamarca.edu.co/" target="_blank"><img src="/img/logo_universidad_completo.png" /
+              alt="Logo Universidad" width="150px"></a>
+        </div>
+        <div class="links">
+          <ul>
+            <li><a href="#">Página Principal</a></li>
+            <li><a href="#">Formatos</a></li>
+            <li><a href="/proyectos">Entregar Proyectos</a></li>
+            <li><a href="#">Consultar Nota</a></li>
+          </ul>
+        </div>
+        <div class="user">
+          <a href="#"><img src="/img/imagen_perfil.png" alt="Logo perfil"></a>
+        </div>
+      </nav>
+    </header>
+    <div class="texto">
+      <h1>Proyectos de Gestión del Conocimiento</h1>
+      <p>Universidad de Cundinamarca Seccional Ubaté</p>
     </div>
-  
-  <% }) %>
- 
+
+    <div class="fondo-image">
+      <div class="fondo-image-img">
+        <div class="fondo-image-text">
+          <h1>Fecha de Entrega</h1>
+          <p>fecha</p>
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="link-files" id="links-download-files">
+      <div class="files">
+        <a href=""> <img src="/img/imagen_pdf.png" alt="" class="link-img"></a>
+      </div>
+      <div class="files">
+        <a href=""> <img src="/img/imagen_pdf.png" alt="" class="link-img"></a>
+      </div>
+      <div class="files">
+        <a href=""> <img src="/img/imagen_pdf.png" alt="" class="link-img"></a>
+      </div> 
+      <div class="files">
+        <a href=""> <img src="/img/imagen_pdf.png" alt="" class="link-img"></a>
+      </div>
+      
+    </div>
+    >
+  </div>
 </body>
+
 </html>
