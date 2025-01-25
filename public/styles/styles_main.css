@@ -25,6 +25,7 @@ body{
 .header{
   width: 100%;
   background-color:var(--color-gris);
+  position: sticky;
 }
 
 .navigation-bar{

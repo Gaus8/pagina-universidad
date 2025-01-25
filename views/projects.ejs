@@ -37,16 +37,16 @@
         <span>Ingrese el nombre del proyecto</span>
         <div class="container-input">
           <ion-icon name="document-text-outline"></ion-icon>
-          <input type="text" placeholder="Nombre Proyecto" id="email-registro2" required>
+          <input type="text" placeholder="Nombre Proyecto" id="roject-name" required>
         </div>
         <span>Ingrese los correos institucionales</span>
         <div class="container-input">
           <ion-icon name="mail-outline"></ion-icon>
-          <input type="email" placeholder="Correo Institucional" id="email-registro1" required>
+          <input type="email" placeholder="Correo Institucional" id="email-number1" required>
         </div>
         <div class="container-input">
           <ion-icon name="mail-outline"></ion-icon>
-          <input type="email" placeholder="Correo Institucional" id="email-registro2" >
+          <input type="email" placeholder="Correo Institucional" id="email-number2">
         </div>
         <span>Seleccione el archivo en formato PDF</span>
         <div class="container-input">
@@ -55,14 +55,33 @@
         </div>
         <span>Ingrese el ciclo al cual pertenece</span>
         <div class="container-input-radio">
-          <label for="radio-1">1<input type="radio" name="ciclo" value="1" id="radio-1" required></label>
-          <label for="radio-2">2<input type="radio" name="ciclo" value="2" id="radio-2" required>></label>
-          <label for="radio-3"><input type="radio" name="ciclo" value="3" id="radio-3" required></label>
+          <div>
+            <label for="radio-1">1 </label>
+            <input type="radio" name="ciclo" value="1" id="radio-1" required>
+
+          </div>
+          <div>
+            <label for="radio-2">2 </label>
+            <input type="radio" name="ciclo" value="2" id="radio-2" required>
+
+          </div>
+          <div>
+            <label for="radio-3">3</label>
+            <input type="radio" name="ciclo" value="3" id="radio-3" required>
+
+          </div>
+
+
         </div>
-        <button type="submit" class="btn btn-principal" id="boton-registro-usuarios">ENVIAR</button>
+        <button type="submit" class="button" id="button-send-file">ENVIAR</button>
       </form>
+      
     </div>
   </div>
+  <div class="special-buttons">
+    <button type="submit" class="button-update btn-hide" id="button-update-file">MODIFICAR ENTREGA</button>
+    <button type="submit" class="button-grade btn-hide" id="button-get-grade">CONSULTAR NOTA</button>
+  </div>  
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
