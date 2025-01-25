@@ -4,6 +4,7 @@ import { routerLogin } from './backend/routes/loginRoutes.js';
 import 'dotenv/config';
 import { connectionDb } from './backend/database/dbConnection.js';
 import { routerMainPage } from './backend/routes/mainRoutes.js';
+import { routerProjects } from './backend/routes/proyectoRoutes.js';
 connectionDb();
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use('/', routerRegister);
 app.use('/', routerLogin);
 app.use('/', routerMainPage);
+app.use('/', routerProjects);
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
