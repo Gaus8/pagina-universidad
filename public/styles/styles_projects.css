@@ -216,6 +216,7 @@ body::before {
   border-radius: 10px;
   border: none;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .button-update {
