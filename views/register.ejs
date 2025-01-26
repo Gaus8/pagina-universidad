@@ -16,13 +16,23 @@
                     <ion-icon name="person-outline" alt="logo-facebook"></ion-icon>
                     <input type="text" placeholder="Nombres y Apellidos" id="nombres-registro" required>
                 </div>
+                <div class="error">
+                  <p id="error-name"></p>
+                </div>
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
                     <input type="email" placeholder="Correo Institucional" id="email-registro" required>
                 </div>
+                <div class="error">
+                  <p id="error-email"></p>
+                </div>
+             
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     <input type="password" placeholder="Contraseña" id="password-registro" required>
+                </div>
+                <div class="error">
+                  <p id="error-password"></p>
                 </div>
                 <button type="submit"  class="btn btn-principal" id="boton-registro-usuarios">REGISTRARSE</button>
             </form>

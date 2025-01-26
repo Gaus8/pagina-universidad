@@ -26,5 +26,3 @@ export function validateRegisterUser (input) {
 export function validateLoginUser (input) {
   return userSchema.partial().safeParse(input);
 }
-
-const k = 'La contraseña debe tener una mayúscula, una minúscula y uno de los siguientes caracteres: .!@#$%^&*';

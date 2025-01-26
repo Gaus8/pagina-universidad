@@ -148,3 +148,13 @@ span{
    border-top: none;
    border-right:none ;
 }
+
+.error{
+  width: 60%;
+  font-size: 12px;
+  color: #f31919;
+  text-align: left;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
