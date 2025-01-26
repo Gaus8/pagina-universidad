@@ -2,7 +2,7 @@ const botonRegistro = document.getElementById('boton-ventana-registro');
 const botonInicio = document.getElementById('boton-inicio-sesion');
 const passwordValue = document.getElementById('password-login');
 const emailValue = document.getElementById('email-login');
-
+const errorText = document.getElementById('error-login');
 const loginUser = async (url, data = {}) => {
   const response = await fetch(url, {
     method: 'POST',
@@ -24,7 +24,9 @@ const loginUser = async (url, data = {}) => {
   if (responseData.status === 'error') {
     if (Array.isArray(responseData.error)) {
       responseData.error.forEach(err => {
-        window.alert(err.message); // Mostrar errores específicos
+        if (err.message === 'error2' || err.message === 'error3') {
+          errorText.innerHTML = 'Email o contraseña incorrectos';
+        }
       });
     } else {
       window.alert(responseData.message); // Mostrar error general

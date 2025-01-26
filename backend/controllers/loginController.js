@@ -34,10 +34,9 @@ const validateLogin = async (req, res) => {
       message: 'Ingreso Exitoso',
       name: findUser.name
     });
-  } else {
-    res.status(404).json({
-      status: 'error',
-      error: 'Email o contraseña incorrectos'
-    });
   }
+  res.status(404).json({
+    status: 'error',
+    error: 'Email o contraseña incorrectos'
+  });
 };

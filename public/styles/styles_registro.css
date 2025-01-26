@@ -151,10 +151,12 @@ span{
 
 .error{
   width: 60%;
-  font-size: 12px;
+  font-weight: 500;
+  font-size: 13px;
   color: #f31919;
   text-align: left;
   display: flex;
   justify-content: start;
   align-items: center;
 }
+
