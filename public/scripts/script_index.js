@@ -25,11 +25,11 @@ const loginUser = async (url, data = {}) => {
     if (Array.isArray(responseData.error)) {
       responseData.error.forEach(err => {
         if (err.message === 'error2' || err.message === 'error3') {
-          errorText.innerHTML = 'Email o contraseña incorrectos';
+          errorText.innerHTML = 'Email o contraseña incorrecta';
         }
       });
     } else {
-      window.alert(responseData.message); // Mostrar error general
+      errorText.innerHTML = (responseData.message); // Mostrar error general
     }
   }
 };

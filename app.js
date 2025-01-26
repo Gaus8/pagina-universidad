@@ -1,14 +1,15 @@
 import express from 'express';
+import 'dotenv/config';
+import cookieParser from 'cookie-parser';
 import { routerRegister } from './backend/routes/registerRoutes.js';
 import { routerLogin } from './backend/routes/loginRoutes.js';
-import 'dotenv/config';
 import { connectionDb } from './backend/database/dbConnection.js';
 import { routerMainPage } from './backend/routes/mainRoutes.js';
 import { routerProjects } from './backend/routes/proyectoRoutes.js';
 connectionDb();
 
 const app = express();
-
+app.use(cookieParser());
 app.use(express.json());
 app.use('/', routerRegister);
 app.use('/', routerLogin);

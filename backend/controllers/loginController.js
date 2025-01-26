@@ -1,6 +1,7 @@
 import { validateLoginUser } from '../esquema/validateString.js';
 import User from '../esquema/userSchema.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -23,20 +24,40 @@ const validateLogin = async (req, res) => {
   }
   const { email, password } = validate.data;
 
-  const findUser = await User.findOne({ email });
-  console.log(findUser);
-
-  const checkPassword = await bcrypt.compare(password, findUser.password);
-
-  if (findUser && checkPassword) {
-    res.status(200).json({
-      status: 'success',
-      message: 'Ingreso Exitoso',
-      name: findUser.name
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(404).json({
+      status: 'error',
+      message: 'EMAIL NO REGISTRADO'
     });
   }
-  res.status(404).json({
-    status: 'error',
-    error: 'Email o contraseña incorrectos'
+  const checkPassword = await bcrypt.compare(password, user.password);
+
+  if (!checkPassword) {
+    return res.status(404).json({
+      status: 'error',
+      message: 'Contraseña incorrecta'
+    });
+  }
+
+  const token = jwt.sign({
+    id: user.id,
+    email: user.email
+  }, process.env.JWT_TOKEN,
+  {
+    expiresIn: '10m'
   });
+
+  console.log(token);
+  res.cookie('access_token', token, {
+    httpOnly: true,
+    sameSite: 'strict'
+  })
+    .status(200).json({
+      status: 'success',
+      message: 'Ingreso Exitoso',
+      name: user.name
+    
+    });
 };
+
