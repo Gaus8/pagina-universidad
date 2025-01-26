@@ -39,16 +39,16 @@ const validateLogin = async (req, res) => {
       message: 'Contraseña incorrecta'
     });
   }
-
+  // Token y validacion con cookies
   const token = jwt.sign({
     id: user.id,
+    name: user.name,
     email: user.email
   }, process.env.JWT_TOKEN,
   {
     expiresIn: '10m'
   });
 
-  console.log(token);
   res.cookie('access_token', token, {
     httpOnly: true,
     sameSite: 'strict'
@@ -57,7 +57,7 @@ const validateLogin = async (req, res) => {
       status: 'success',
       message: 'Ingreso Exitoso',
       name: user.name
-    
+
     });
 };
 
