@@ -62,7 +62,7 @@ const showErrors = (arreglo) => {
         nameText.innerHTML = 'El nombre debe ser mayor a seis caracteres';
       } else if (arreglo[i] === 'error2' || arreglo[i] === 'error3') {
         emailText.innerHTML = 'El correo debe ser institucional';
-        passwordText.innerHTML = 'La contraseña debe tener una mayúscula, una minúscula y uno de los siguientes caracteres: .!@#$%^&*';
+        passwordText.innerHTML = 'La contraseña debe tener una mayúscula, una minúscula, un número y uno de los siguientes caracteres: .!@#$%^&*';
       }
     }
   }
