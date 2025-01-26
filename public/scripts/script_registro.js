@@ -30,17 +30,19 @@ const validateResponse = async (response) => {
       window.location.href = '/';
     }, 500);
   }
-
+  const errores = [];
   if (responseData.status === 'error') {
     if (Array.isArray(responseData.error)) {
       responseData.error.forEach(err => {
-        window.alert(err.message); // Mostrar errores específicos
+        errores.push(err.message);
       });
     } else {
       window.alert(responseData.message); // Mostrar error general
     }
   }
+  console.log(errores);
 };
+
 
 botonRegistroUsuarios.addEventListener('click', async (event) => {
   event.preventDefault();

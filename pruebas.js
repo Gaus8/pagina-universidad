@@ -1,14 +1,31 @@
-import { Dropbox } from 'dropbox';
-import 'dotenv/config';
-import fs from 'fs';
-import fetch from 'node-fetch';
-const TOKEN = process.env.TOKEN_DROPBOX;
+// import { Dropbox } from 'dropbox';
+// import 'dotenv/config';
+// import fs from 'fs';
+// import fetch from 'node-fetch';
+// const TOKEN = process.env.TOKEN_DROPBOX;
 
-const dbx = new Dropbox({
-  accessToken: TOKEN,
-  fetch
-});
+// const dbx = new Dropbox({
+//   accessToken: TOKEN,
+//   fetch
+// });
 
+// export class Drop {
+// // Asegúrate de inicializar Dropbox con tu token
+
+//   async descargar (rutaDropbox, rutaLocal) {
+//     try {
+//       const archivo = await dbx.filesDownload({ path: rutaDropbox });
+
+//       // Convertir el archivo a Buffer y guardarlo
+//       const contenido = archivo.result.fileBinary;
+//       fs.writeFileSync(rutaLocal, contenido, 'binary'); // Guardar en formato binario
+
+//       console.log(`Archivo descargado y guardado en: ${rutaLocal}`);
+//     } catch (error) {
+//       console.error('Error al descargar el archivo:', error);
+//     }
+//   }
+// }
 
 // async function subirArchivo (rutaLocal, rutaDropbox) {
 //   try {
@@ -54,24 +71,3 @@ const dbx = new Dropbox({
 
 
 
-// Asegúrate de inicializar Dropbox con tu token
-
-// async function descargar(rutaDropbox, rutaLocal) {
-//   try {
-//     const archivo = await dbx.filesDownload({ path: rutaDropbox });
-
-//     // Convertir el archivo a Buffer y guardarlo
-//     const contenido = archivo.result.fileBinary;
-//     fs.writeFileSync(rutaLocal, contenido, 'binary'); // Guardar en formato binario
-
-//     console.log(`Archivo descargado y guardado en: ${rutaLocal}`);
-//   } catch (error) {
-//     console.error('Error al descargar el archivo:', error);
-//   }
-// }
-
-// // Ejemplo de uso
-// const rutaDropbox = '/ciclo3/k.txt';
-// const rutaLocal = 'texto.txt';
-
-// descargar(rutaDropbox, rutaLocal);
