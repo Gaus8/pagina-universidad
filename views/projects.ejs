@@ -35,12 +35,12 @@
     <form class="amount-students">
       <h2>Cantidad de integrantes</h2>
       <div class="amount-students-radio">
-        <label for="input-radio-students">1 </label>
-        <input type="radio" name="radio-students" value="1" checked required>
+        <label for="input-radio-number1">1 </label>
+        <input type="radio" name="radio-students" id="input-radio-number1" value="1" checked required>
       </div>
       <div class="amount-students-radio">
-        <label for="input-radio-students">2</label>
-        <input type="radio" name="radio-students" value="2" required>
+        <label for="input-radio-number2">2</label>
+        <input type="radio" name="radio-students"  id="input-radio-number2" value="2" required>
       </div>
       <button id="button-students">Enviar</button>
     </form>
@@ -64,7 +64,7 @@
         <span>Seleccione el archivo en formato PDF</span>
         <div class="container-input">
           <ion-icon name="document-attach-outline"></ion-icon>
-          <input type="file" placeholder="Archivo" id="file" required>
+          <input type="file" placeholder="Archivo" id="file-upload" accept="application/pdf" required>
         </div>
         <span>Ingrese el ciclo al cual pertenece</span>
         <div class="container-input-radio">
@@ -86,7 +86,7 @@
 
 
         </div>
-        <button class="button" id="button-send-project">ENVIAR</button>
+        <button type="button" class="button" id="button-send-project">ENVIAR</button>
       </form>
       
     </div>

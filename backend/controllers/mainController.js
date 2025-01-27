@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-
+import multer from 'multer';
 
 export const validateToken = async (req, res) => {
   const token = req.cookies.access_token;
@@ -14,4 +14,6 @@ export const validateToken = async (req, res) => {
   }
 };
 
+
+ // Carpeta donde se guardarán los archivos
 
