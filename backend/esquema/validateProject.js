@@ -2,10 +2,10 @@ import { z } from 'zod';
 
 
 const projectSchema = z.object({
-  name: z.string()
+  projectName: z.string()
     .min(12, { message: 'error1' }),
 
-  email: z.string().email({
+  email1: z.string().email({
     message: 'El correo debe ser un correo valido'
   }).refine(
     (email) => email.endsWith('@ucundinamarca.edu.co'), {
@@ -19,11 +19,15 @@ const projectSchema = z.object({
     (email) => email.endsWith('@ucundinamarca.edu.co'), {
       message: 'error2'
     }
-  ).optional()
+  )
 
 });
 
-export function validateRegisterUser (input) {
+export function validateProject (input) {
   return projectSchema.safeParse(input);
+};
+
+export function validateProjectPartial (input) {
+  return projectSchema.partial().safeParse(input);
 };
 
