@@ -17,7 +17,7 @@ const loginUser = async (url, data = {}) => {
     console.log(responseData.name);
     window.alert(responseData.message);
     return setTimeout(() => {
-      window.location.href = '/main';
+      window.location.href = '/students';
     }, 500);
   }
 

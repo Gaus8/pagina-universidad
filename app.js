@@ -5,16 +5,15 @@ import { routerRegister } from './backend/routes/registerRoutes.js';
 import { routerLogin } from './backend/routes/loginRoutes.js';
 import { connectionDb } from './backend/database/dbConnection.js';
 import { routerMainPage } from './backend/routes/mainRoutes.js';
-import { routerProjects } from './backend/routes/proyectoRoutes.js';
+
 connectionDb();
 
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
-app.use('/', routerRegister);
+app.use('/register', routerRegister);
 app.use('/', routerLogin);
-app.use('/', routerMainPage);
-app.use('/', routerProjects);
+app.use('/students', routerMainPage);
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 

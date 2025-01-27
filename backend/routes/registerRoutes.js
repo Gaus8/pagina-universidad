@@ -3,9 +3,9 @@ import { registerUser } from '../controllers/registerController.js';
 
 export const routerRegister = express.Router();
 
-routerRegister.get('/register', (req, res) => {
+routerRegister.get('', (req, res) => {
   res.render('register');
 });
 
-routerRegister.post('/register', registerUser);
+routerRegister.post('/', registerUser);
 
