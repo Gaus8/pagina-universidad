@@ -69,11 +69,12 @@ body{
   margin-right: 10px;
   align-items: center;
   font-size: 18px;
-  
 }
+
 .links a{
   text-decoration: none;
   color: var(--color-negro);
+  text-align: center;
 }
 
 .links a:hover{

@@ -54,8 +54,8 @@ botonRegistro.addEventListener('click', (event) => {
 
 botonInicio.addEventListener('click', (event) => {
   event.preventDefault();
-  const email = emailValue.value;
-  const password = passwordValue.value;
+  const email = emailValue.value.trim();
+  const password = passwordValue.value.trim();
 
   if (!email || !password) {
     return window.alert('Asegurese de llenar todos lo campos');

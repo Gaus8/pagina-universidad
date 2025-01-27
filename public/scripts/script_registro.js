@@ -68,7 +68,6 @@ const showErrors = (arreglo) => {
   }
 };
 
-
 botonRegistroUsuarios.addEventListener('click', async (event) => {
   event.preventDefault();
   const name = nombreValue.value;
