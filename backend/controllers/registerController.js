@@ -5,8 +5,7 @@ import bcrypt from 'bcrypt';
 import User from '../esquema/userSchema.js';
 
 export const registerUser = async (req, res) => {
-  console.log(process.env.TOKEN_DROPBOX);
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
   if (!name || !email || !password) {
     return res.status(400).json({
       status: 'error',
@@ -27,14 +26,16 @@ export const registerUser = async (req, res) => {
     const newUser = {
       name: validar.data.name,
       email: validar.data.email,
-      password: hashedPassword
+      password: hashedPassword,
+      role: role || 'student' 
     };
 
     const sendMessage = await createUser(newUser);
 
     res.status(201).json({
       status: 'success',
-      message: sendMessage
+      message: sendMessage,
+      name: newUser.role
     });
   } catch (error) {
     res.status(400).json({
