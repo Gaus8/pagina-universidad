@@ -5,8 +5,10 @@ import { routerRegister } from './backend/routes/registerRoutes.js';
 import { routerLogin } from './backend/routes/loginRoutes.js';
 import { connectionDb } from './backend/database/dbConnection.js';
 import { routerMainPage } from './backend/routes/mainRoutes.js';
-
+import { findDocuments } from './backend/database/dropbox.js';
 connectionDb();
+
+findDocuments('/ciclo3');
 
 const app = express();
 app.use(cookieParser());

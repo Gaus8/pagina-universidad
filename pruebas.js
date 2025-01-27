@@ -1,13 +1,13 @@
-// import { Dropbox } from 'dropbox';
-// import 'dotenv/config';
-// import fs from 'fs';
-// import fetch from 'node-fetch';
-// const TOKEN = process.env.TOKEN_DROPBOX;
+import { Dropbox } from 'dropbox';
+import 'dotenv/config';
+import fs from 'fs';
+import fetch from 'node-fetch';
+const TOKEN = process.env.TOKEN_DROPBOX;
 
-// const dbx = new Dropbox({
-//   accessToken: TOKEN,
-//   fetch
-// });
+const dbx = new Dropbox({
+  accessToken: TOKEN,
+  fetch
+});
 
 // export class Drop {
 // // Asegúrate de inicializar Dropbox con tu token
@@ -27,28 +27,28 @@
 //   }
 // }
 
-// async function subirArchivo (rutaLocal, rutaDropbox) {
-//   try {
-//     // Leer el archivo desde el sistema local
-//     const archivo = fs.readFileSync(rutaLocal);
+async function subirArchivo (rutaLocal, rutaDropbox) {
+  try {
+    // Leer el archivo desde el sistema local
+    const archivo = fs.readFileSync(rutaLocal);
 
-//     // Subir el archivo a Dropbox
-//     const response = await dbx.filesUpload({
-//       path: rutaDropbox, // Ruta destino en Dropbox, debe empezar con '/'
-//       contents: archivo
-//     });
+    // Subir el archivo a Dropbox
+    const response = await dbx.filesUpload({
+      path: rutaDropbox, // Ruta destino en Dropbox, debe empezar con '/'
+      contents: archivo
+    });
 
-//     console.log('Archivo subido con éxito:', response.result);
-//   } catch (error) {
-//     console.error('Error subiendo archivo:', error);
-//   }
-// }
+    console.log('Archivo subido con éxito:', response.result);
+  } catch (error) {
+    console.error('Error subiendo archivo:', error);
+  }
+}
 
-// // Ejemplo de uso
-// const rutaLocal = 'ha.pdf';
-// const rutaDropbox = '/ciclo3/haha.pdf'; // Ruta en Dropbox
+// Ejemplo de uso
+const rutaLocal = 'archivo.pdf';
+const rutaDropbox = '/ciclo3/haha.pdf'; // Ruta en Dropbox
 
-// subirArchivo(rutaLocal, rutaDropbox);
+subirArchivo(rutaLocal, rutaDropbox);
 
 // ELIMINAR ARCHIVOS
 // async function eliminarArchivo (ruta) {

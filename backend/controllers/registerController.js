@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import User from '../esquema/userSchema.js';
 
 export const registerUser = async (req, res) => {
+  console.log(process.env.TOKEN_DROPBOX);
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     return res.status(400).json({
