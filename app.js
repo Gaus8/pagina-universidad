@@ -4,11 +4,9 @@ import cookieParser from 'cookie-parser';
 import { routerRegister } from './backend/routes/registerRoutes.js';
 import { routerLogin } from './backend/routes/loginRoutes.js';
 import { connectionDb } from './backend/database/dbConnection.js';
-import { routerMainPage } from './backend/routes/mainRoutes.js';
-import { findDocuments } from './backend/database/dropbox.js';
-connectionDb();
+import { routerMainPage } from './backend/routes/studentsRoutes.js';
 
-findDocuments('/ciclo3');
+connectionDb();
 
 const app = express();
 app.use(cookieParser());
