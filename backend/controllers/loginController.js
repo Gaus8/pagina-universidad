@@ -46,7 +46,7 @@ const validateLogin = async (req, res) => {
     email: user.email
   }, process.env.JWT_TOKEN,
   {
-    expiresIn: '10m'
+    expiresIn: '1h'
   });
 
   res.cookie('access_token', token, {
