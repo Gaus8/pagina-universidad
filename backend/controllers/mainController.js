@@ -31,7 +31,7 @@ export const sendProject = (req, res) => {
     }
   }
   if (email2 !== '') {
-    const validar = validateProjectPartial({ projectName, email1, email2, ciclo });
+    const validar = validateProject({ projectName, email1, email2, ciclo });
     if (validar.error) {
       return res.status(400).json({
         status: 'error',
