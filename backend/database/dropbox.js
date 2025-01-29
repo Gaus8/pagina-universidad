@@ -22,9 +22,7 @@ export const uploadFile = async (ruta, req) => {
 
   try {
     const sharedLink = await dbx.sharingCreateSharedLinkWithSettings({ path: response.result.path_lower });
-    const fileUrl = sharedLink.result.url;
-    console.log(sharedLink);
-    console.log('Archivo subido con éxito:', fileUrl);
+    return sharedLink.result.url;
   } catch (error) {
     console.log(error.error.error_summary);
   }

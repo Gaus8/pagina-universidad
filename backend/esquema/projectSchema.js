@@ -34,6 +34,11 @@ const projectSchema = mongoose.Schema({
   calificado: {
     type: String,
     default: 'NO'
+  },
+
+  fecha: {
+    type: Date,
+    default: Date.now
   }
 
 });
