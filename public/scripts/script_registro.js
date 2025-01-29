@@ -86,3 +86,6 @@ botonVentanaInicio.addEventListener('click', (event) => {
     window.location.href = '/';
   }, 200);
 });
+
+
+const date = dayjs().format('DD/MM/YYYY hh:mm a');
