@@ -40,12 +40,12 @@ const validateOneEmail = async (req, res) => {
 
   const projectExists = await validateNewProject(validar.data);
   if (projectExists) {
-    return res.status(400).json({ message: 'Proyecto ya registrado' });
+    return res.status(400).json({ message: 'Este email ya registro un proyecto' });
   }
 
   const url = await uploadFile(`/ciclo${ciclo}/${req.file.originalname}`, req);
   if (url.error) {
-    return res.status(400).json({ message: 'Archivo ya guardado' });
+    return res.status(400).json({ message: 'Este documento ya ha sido guardado' });
   }
   const newProject = {
     projectName: validar.data.projectName.toUpperCase(),
@@ -56,7 +56,7 @@ const validateOneEmail = async (req, res) => {
 
   const registerProject = await saveProject(newProject);
   if (!registerProject) {
-    return res.status(400).json({ message: 'Archivo ya guardado' });
+    return res.status(400).json({ message: 'Este documento ya ha sido guardado' });
   }
   return res.status(201).json({ message: 'Proyecto Guardado con Exito' });
 };
@@ -73,12 +73,12 @@ const validateDoubleEmail = async (req, res) => {
   }
   const projectExists = await validateNewProject(validar.data);
   if (projectExists) {
-    return res.status(400).json({ message: 'Proyecto ya registrado' });
+    return res.status(400).json({ message: 'Este email ya registro un proyecto' });
   }
 
   const url = await uploadFile(`/ciclo${ciclo}/${req.file.originalname}`, req);
   if (!url) {
-    return res.status(400).json({ message: 'Archivo ya guardado' });
+    return res.status(400).json({ message: 'Este documento ya ha sido guardado' });
   }
   const newProject = {
     projectName: validar.data.projectName.toUpperCase(),
@@ -90,7 +90,7 @@ const validateDoubleEmail = async (req, res) => {
 
   const registerProject = await saveProject(newProject);
   if (!registerProject) {
-    return res.status(400).json({ message: 'Archivo ya guardado' });
+    return res.status(400).json({ message: 'Este documento ya ha sido guardado' });
   }
   return res.status(201).json({ message: 'Proyecto Guardado con Exito' });
 };

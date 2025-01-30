@@ -27,7 +27,7 @@ export const registerUser = async (req, res) => {
       name: validar.data.name,
       email: validar.data.email,
       password: hashedPassword,
-      role: role || 'student' 
+      role: role || 'student'
     };
 
     const sendMessage = await createUser(newUser);

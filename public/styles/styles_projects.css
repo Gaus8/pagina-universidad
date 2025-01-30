@@ -288,3 +288,17 @@ body::before {
   box-shadow: -3px -3px  #ec2f00ec;
   transition:ease-in-out 0.5s;
 }
+
+.final-text {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 80%;
+  display: none;
+}
+
+.final-text p{
+  font-size: 12px;
+  color: #e20000;
+}
