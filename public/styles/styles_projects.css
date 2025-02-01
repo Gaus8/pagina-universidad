@@ -25,7 +25,6 @@ body {
 
 body::before {
   content: '';
-  /* Asegúrate de incluir esto para que el pseudo-elemento funcione */
   position: absolute;
   top: 0;
   left: 0;

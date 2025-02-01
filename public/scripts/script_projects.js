@@ -10,34 +10,22 @@ const buttonProject = document.getElementById('button-send-project');
 const buttonFindProject = document.getElementById('button-get-grade');
 const finalDiv = document.querySelector('.final-text');
 
-buttonFindProject.addEventListener('click', (e) =>{
+buttonFindProject.addEventListener('click', (e) => {
   e.preventDefault();
   getProject();
 });
 
-// Función para obtener los proyectos
 const getProject = () => {
-  fetch('/api/students/projects', {
+  fetch('/projects', {
     method: 'GET',
-    credentials: 'include' // Envía las cookies automáticamente
+    credentials: 'include' // Importante: esto permite que se envíen cookies con la petición
   })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      // Mostrar los proyectos en la lista
-      projectList.innerHTML = ''; // Limpiar la lista
-      data.forEach(project => {
-        const li = document.createElement('li');
-        li.textContent = project.name; // Ajusta según la estructura de tus proyectos
-        projectList.appendChild(li);
-      });
-    })
+    .then(response => response.json())
+    .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
 };
+
+
 const sendProject = async (url, formdata) => {
   try {
     const response = await fetch(url, {
