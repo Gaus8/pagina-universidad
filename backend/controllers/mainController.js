@@ -2,20 +2,7 @@ import jwt from 'jsonwebtoken';
 import { validateProject, validateProjectPartial } from '../esquema/validateProject.js';
 import { uploadFile } from '../database/dropbox.js';
 import Projects from '../esquema/projectSchema.js';
-
-export const validateToken = (ruta) => async (req, res) => {
-  const token = req.cookies.access_token;
-  if (!token) {
-    return res.status(403).send('ACCESS NO AUTHORIZED');
-  }
-  try {
-    const data = jwt.verify(token, process.env.JWT_TOKEN);
-    res.render(ruta, { data });
-  } catch (error) {
-    console.error('Error de autenticación:', error);
-    return res.status(403).send('ACCESS NO AUTHORIZED');
-  }
-};
+import User from '../esquema/userSchema.js';
 
 
 export const sendProject = async (req, res) => {
@@ -26,7 +13,6 @@ export const sendProject = async (req, res) => {
     await validateDoubleEmail(req, res);
   }
 };
-
 
 const validateOneEmail = async (req, res) => {
   const { projectName, email1, ciclo } = req.body;
@@ -71,9 +57,14 @@ const validateDoubleEmail = async (req, res) => {
       error: JSON.parse(validar.error.message)
     });
   }
+
+  if (validar.data.email1 === validar.data.email2) {
+    return res.status(400).json({ message: 'Los correos no pueden ser los mismos' });
+  }
+
   const projectExists = await validateNewProject(validar.data);
   if (projectExists) {
-    return res.status(400).json({ message: 'Este email ya registro un proyecto' });
+    return res.status(400).json({ message: 'Los correos ya registraron un proyecto' });
   }
 
   const url = await uploadFile(`/ciclo${ciclo}/${req.file.originalname}`, req);
@@ -115,3 +106,13 @@ async function validateNewProject (project) {
   }
   return false; // No existe el proyecto
 }
+
+export const getProject = () => {
+  fetch('/students/projects', {
+    method: 'GET',
+    credentials: 'include' // Importante: esto permite que se envíen cookies con la petición
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+};

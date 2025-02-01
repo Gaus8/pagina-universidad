@@ -113,7 +113,7 @@ body::before {
 }
 
 .amount-students{
-  margin: 0 auto;
+  margin: 15px auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,7 +124,7 @@ body::before {
 }
 .amount-students h2{
   text-align: center;
-  font-size: clamp(1rem, 2vw, 3rem);
+  font-size: clamp(0.5rem, 2vw, 2rem);
   color: #707070;
 }
 
@@ -251,15 +251,19 @@ body::before {
     
 }
 
-.special-buttons{
-  margin: 0 auto;
+.container-special-buttons {
+  margin:auto;
   width: 30%;
+}
+
+.special-buttons{
   display: flex;
   justify-content:space-between;
   align-items: center;
   gap: 10px;
 }
-.btn-hide{
+
+.btn-hide {
   color:var(--color-blanco);
   width: 50%;
   height: 50px;
@@ -267,7 +271,6 @@ body::before {
   border: none;
   font-size: 18px;
   cursor: pointer;
-  display: none;
 }
 
 .button-update {
@@ -299,6 +302,6 @@ body::before {
 }
 
 .final-text p{
-  font-size: 12px;
+  font-size: 14px;
   color: #e20000;
 }

@@ -1,12 +1,43 @@
 const projectNameValue = document.getElementById('project-name');
 const email1Value = document.getElementById('email-number1');
 const email2Value = document.getElementById('email-number2');
-const buttonStudents = document.getElementById('button-students');
-const buttonProject = document.getElementById('button-send-project');
 const fileInput = document.getElementById('file-upload');
-const finalDiv = document.querySelector('.final-text');
 const finalText = document.getElementById('final-text-paragraph');
 
+// Buttons
+const buttonStudents = document.getElementById('button-students');
+const buttonProject = document.getElementById('button-send-project');
+const buttonFindProject = document.getElementById('button-get-grade');
+const finalDiv = document.querySelector('.final-text');
+
+buttonFindProject.addEventListener('click', (e) =>{
+  e.preventDefault();
+  getProject();
+});
+
+// Función para obtener los proyectos
+const getProject = () => {
+  fetch('/api/students/projects', {
+    method: 'GET',
+    credentials: 'include' // Envía las cookies automáticamente
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Mostrar los proyectos en la lista
+      projectList.innerHTML = ''; // Limpiar la lista
+      data.forEach(project => {
+        const li = document.createElement('li');
+        li.textContent = project.name; // Ajusta según la estructura de tus proyectos
+        projectList.appendChild(li);
+      });
+    })
+    .catch(error => console.error('Error:', error));
+};
 const sendProject = async (url, formdata) => {
   try {
     const response = await fetch(url, {
@@ -20,6 +51,7 @@ const sendProject = async (url, formdata) => {
   }
 };
 
+
 buttonStudents.addEventListener('click', (e) => {
   e.preventDefault();
   displayAndHide();
@@ -27,6 +59,12 @@ buttonStudents.addEventListener('click', (e) => {
 
 buttonProject.addEventListener('click', async (e) => {
   e.preventDefault();
+  await getData();
+});
+
+
+
+async function getData () {
   const projectName = projectNameValue.value;
   const email1 = email1Value.value.trim();
   const email2 = email2Value.value.trim();
@@ -52,9 +90,8 @@ buttonProject.addEventListener('click', async (e) => {
   finalDiv.style.display = 'block';
   finalText.style.color = 'green';
   finalText.innerHTML = 'Enviando proyecto ...';
-
   await sendProject('/students/projects', formData);
-});
+}
 
 function displayAndHide () {
   if (getSelectedRadio('radio-students') === '1') {
@@ -93,8 +130,12 @@ function getResponse (response, result) {
   }
   finalText.innerHTML = result.message;
   cleanFields();
+  document.querySelector('.form-container').style.display = 'none';
+  document.querySelector('.container-special-buttons').style.display = 'block';
   return true;
 };
+
+
 
 
 

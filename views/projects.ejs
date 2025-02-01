@@ -56,7 +56,7 @@
         <div class="container-input">
           <ion-icon name="mail-outline"></ion-icon>
           
-          <input type="email" placeholder="Correo Institucional" id="email-number1"  value="<%= data.email  %>" required>
+          <input type="email" placeholder="Correo Institucional" id="email-number1"  value="<%= user.email  %>" required>
         
         </div>
         <div class="container-input">
@@ -96,10 +96,13 @@
       
     </div>
   </div>
-  <div class="special-buttons">
-    <button class="button-update btn-hide" id="button-update-file">MODIFICAR ENTREGA</button>
-    <button class="button-grade btn-hide" id="button-get-grade">CONSULTAR NOTA</button>
-  </div>  
+  <div class="container-special-buttons">
+    <div class="special-buttons">
+      <button class="button-update btn-hide" id="button-update-file">MODIFICAR ENTREGA</button>
+      <button class="button-grade btn-hide" id="button-get-grade">CONSULTAR NOTA</button>
+    </div>  
+  </div>
+ 
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
