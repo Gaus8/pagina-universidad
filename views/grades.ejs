@@ -38,7 +38,12 @@
      
      
        <div class="display-info">
+        
         <h1>CALIFICACIÓN PROYECTO DE GESTIÓN</h1>
+        <p class="main-text">Descargar Proyecto</p>
+        <div class="img-project">
+          <a href="<%= userProject.url.replace('dl=0','dl=1' )%>"><img src="/img/imagen_pdf.png" alt="logo-pdf"> </a>  
+         </div>
            <ul>
              <li><span class="main-text">Nombre del proyecto:</span><%= userProject.projectName %></li>
              <li><span class="main-text">Email:</span><%= userProject.email1 %></li>
@@ -54,14 +59,14 @@
             
              <% if ( userProject.nota !== '0') { %>
                <li><span class="main-text">Nota:</span><%= userProject.nota %></li>
+               <li><span class="main-text">Observaciones:</span><%= userProject.observaciones %></li>
              <% } %>
+
+             <% if (date !== '') { %>
+              <li><span class="main-text">Fecha de entrega:</span><%= date %></li>
+            <% } %>
            </ul>
-           <p class="main-text">Descargar Proyecto</p>
-           <div class="img-project">
-            
-            <a href="<%= userProject.url.replace('dl=0','dl=1' )%>"><img src="/img/imagen_pdf.png" alt="logo-pdf"> </a>  
-           </div>
-        
+          
         </div>
        <% } %>
      

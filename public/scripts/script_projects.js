@@ -5,26 +5,11 @@ const fileInput = document.getElementById('file-upload');
 const finalText = document.getElementById('final-text-paragraph');
 
 // Buttons
-const buttonStudents = document.getElementById('button-students');
-const buttonProject = document.getElementById('button-send-project');
-const buttonFindProject = document.getElementById('button-get-grade');
+const studentsButton = document.getElementById('button-students');
+const projectButton = document.getElementById('button-send-project');
+const updateButton = document.getElementById('button-update-file');
+
 const finalDiv = document.querySelector('.final-text');
-
-buttonFindProject.addEventListener('click', (e) => {
-  e.preventDefault();
-  getProject();
-});
-
-const getProject = () => {
-  fetch('/projects', {
-    method: 'GET',
-    credentials: 'include' // Importante: esto permite que se envíen cookies con la petición
-  })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-};
-
 
 const sendProject = async (url, formdata) => {
   try {
@@ -40,12 +25,12 @@ const sendProject = async (url, formdata) => {
 };
 
 
-buttonStudents.addEventListener('click', (e) => {
+studentsButton.addEventListener('click', (e) => {
   e.preventDefault();
   displayAndHide();
 });
 
-buttonProject.addEventListener('click', async (e) => {
+projectButton.addEventListener('click', async (e) => {
   e.preventDefault();
   await getData();
 });
@@ -97,12 +82,12 @@ function getSelectedRadio (name) {
   return selected ? selected.value : 'No hay ningún botón seleccionado';
 };
 
-
 function cleanFields () {
   projectNameValue.value = '';
   email1Value.value = '';
   email2Value.value = '';
   fileInput.value = '';
+  finalText.innerHTML = '';
 };
 
 function getResponse (response, result) {
@@ -117,9 +102,11 @@ function getResponse (response, result) {
     return false;
   }
   finalText.innerHTML = result.message;
-  cleanFields();
-  document.querySelector('.form-container').style.display = 'none';
-  document.querySelector('.container-special-buttons').style.display = 'block';
+  setTimeout(() => {
+    cleanFields();
+    updateButton.style.display = 'block';
+  }, 3000);
+
   return true;
 };
 

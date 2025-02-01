@@ -35,6 +35,10 @@ const projectSchema = mongoose.Schema({
     type: String,
     default: 'NO'
   },
+  observaciones: {
+    type: String,
+    default: ''
+  },
 
   fecha: {
     type: Date,

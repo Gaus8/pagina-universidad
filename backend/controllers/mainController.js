@@ -1,8 +1,8 @@
-import jwt from 'jsonwebtoken';
 import { validateProject, validateProjectPartial } from '../esquema/validateProject.js';
 import { uploadFile } from '../database/dropbox.js';
 import Projects from '../esquema/projectSchema.js';
-import User from '../esquema/userSchema.js';
+import dayjs from 'dayjs';
+import { date } from 'zod';
 
 
 export const sendProject = async (req, res) => {
@@ -107,12 +107,27 @@ async function validateNewProject (project) {
   return false; // No existe el proyecto
 }
 
-export const getProject = () => {
-  fetch('/students/projects', {
-    method: 'GET',
-    credentials: 'include' // Importante: esto permite que se envíen cookies con la petición
-  })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
+export const getProject = async (req, res) => {
+  try {
+    const email = req.user.email; // Obtener el email del usuario desde la cookie
+    if (!email) {
+      return res.status(403).json({ message: 'No autorizado' });
+    }
+
+    const projects = await Projects.findOne({
+      $or: [{ email1: email }, { email2: email }]
+    });
+
+    let date = null; // Declarar date fuera del if
+
+    if (projects && projects.fecha) {
+      dayjs.locale('es'); // Establecer el idioma español
+      date = dayjs(projects.fecha).format('DD MMM YYYY hh:mm A'); // Formatear fecha
+    }
+
+    res.render('grades', { user: req.user, userProject: projects, date });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener proyectos' });
+  }
 };
