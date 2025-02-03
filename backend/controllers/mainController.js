@@ -4,7 +4,6 @@ import Projects from '../esquema/projectSchema.js';
 import dayjs from 'dayjs';
 import { date } from 'zod';
 
-
 export const sendProject = async (req, res) => {
   const { email2 } = req.body;
   if (email2 === '') {
@@ -47,7 +46,6 @@ const validateOneEmail = async (req, res) => {
   return res.status(201).json({ message: 'Proyecto Guardado con Exito' });
 };
 
-
 const validateDoubleEmail = async (req, res) => {
   const { projectName, email1, email2, ciclo } = req.body;
   const validar = validateProject({ projectName, email1, email2, ciclo });
@@ -86,7 +84,6 @@ const validateDoubleEmail = async (req, res) => {
   return res.status(201).json({ message: 'Proyecto Guardado con Exito' });
 };
 
-
 async function saveProject (project) {
   try {
     const createProject = await Projects.create(project);
@@ -107,9 +104,9 @@ async function validateNewProject (project) {
   return false; // No existe el proyecto
 }
 
-export const getProject = async (req, res) => {
+export const changeRoute = (ruta) => async (req, res) => {
   try {
-    const email = req.user.email; // Obtener el email del usuario desde la cookie
+    const email = req.user.email;
     if (!email) {
       return res.status(403).json({ message: 'No autorizado' });
     }
@@ -118,14 +115,14 @@ export const getProject = async (req, res) => {
       $or: [{ email1: email }, { email2: email }]
     });
 
-    let date = null; // Declarar date fuera del if
+    let date = '';
 
     if (projects && projects.fecha) {
       dayjs.locale('es'); // Establecer el idioma español
-      date = dayjs(projects.fecha).format('DD MMM YYYY hh:mm A'); // Formatear fecha
+      date = dayjs(projects.fecha).format('DD MMM YYYY hh:mm A');
     }
 
-    res.render('grades', { user: req.user, userProject: projects, date });
+    res.render(ruta, { user: req.user, userProject: projects, date });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error al obtener proyectos' });

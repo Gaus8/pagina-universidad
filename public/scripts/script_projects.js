@@ -106,7 +106,7 @@ function getResponse (response, result) {
     cleanFields();
     updateButton.style.display = 'block';
   }, 3000);
-
+  window.location.href = '/students/projects';
   return true;
 };
 

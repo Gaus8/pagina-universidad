@@ -29,75 +29,84 @@
       </nav>
     </header>
     <div class="text">
-      <h1>Envio de proyectos de Gestión</h1>
+      <% if (userProject) { %>
+        <h1><strong>Modificar</strong> Entrega</h1>
+        <% } else{ %> 
+      <h1>Envio de Proyectos de Gestión</h1>
+      <%}%>
     </div>
 
-    <form class="amount-students">
-      <h2>Cantidad de integrantes</h2>
-      <div class="amount-students-radio">
-        <label for="input-radio-number1">1 </label>
-        <input type="radio" name="radio-students" id="input-radio-number1" value="1" checked required>
-      </div>
-      <div class="amount-students-radio">
-        <label for="input-radio-number2">2</label>
-        <input type="radio" name="radio-students"  id="input-radio-number2" value="2" required>
-      </div>
-      <button id="button-students">Enviar</button>
-    </form>
     
-    <div class="form-container">
-      <form class="input-send-files">
-        <span>Ingrese el nombre del proyecto</span>
-        <div class="container-input">
-          <ion-icon name="document-text-outline"></ion-icon>
-          <input type="text" placeholder="Nombre Proyecto" id="project-name" required>
+      <form class="amount-students">
+        <h2>Cantidad de integrantes</h2>
+        <div class="amount-students-radio">
+          <label for="input-radio-number1">1 </label>
+          <input type="radio" name="radio-students" id="input-radio-number1" value="1" checked required>
         </div>
-        <span>Ingrese los correos institucionales</span>
-        <div class="container-input">
-          <ion-icon name="mail-outline"></ion-icon>
-          
-          <input type="email" placeholder="Correo Institucional" id="email-number1"  value="<%= user.email  %>" required>
-        
+        <div class="amount-students-radio">
+          <label for="input-radio-number2">2</label>
+          <input type="radio" name="radio-students"  id="input-radio-number2" value="2" required>
         </div>
-        <div class="container-input">
-          <ion-icon name="mail-outline"></ion-icon>
-          <input type="email" placeholder="Correo Institucional" id="email-number2">
-        </div>
-        <span>Seleccione el archivo en formato PDF</span>
-        <div class="container-input">
-          <ion-icon name="document-attach-outline"></ion-icon>
-          <input type="file" placeholder="Archivo" id="file-upload" accept="application/pdf" required>
-        </div>
-        <span>Ingrese el ciclo al cual pertenece</span>
-        <div class="container-input-radio">
-          <div>
-            <label for="radio-1">1 </label>
-            <input type="radio" name="ciclo" value="1" id="radio-1" required checked>
-
-          </div>
-          <div>
-            <label for="radio-2">2 </label>
-            <input type="radio" name="ciclo" value="2" id="radio-2" required>
-
-          </div>
-          <div>
-            <label for="radio-3">3</label>
-            <input type="radio" name="ciclo" value="3" id="radio-3" required>
-
-          </div>
-
-
-        </div>
-        <div class="final-text">
-          <p id="final-text-paragraph"></p>
-        </div>
-        <button type="button" class="button" id="button-send-project">ENVIAR</button>
-        <button class="button-update btn-hide" id="button-update-file">MODIFICAR ENTREGA</button>
+        <% if (!userProject) { %>
+        <button id="button-students">ENVIAR</button>
+        <% } else{ %>
+          <button id="button-students" >MODIFICAR ENTREGA</button>
+        <% } %>
       </form>
-      
-    </div>
+    
+      <div class="form-container">
+        <form class="input-send-files">
+          <span>Ingrese el nombre del proyecto</span>
+          <div class="container-input">
+            <ion-icon name="document-text-outline"></ion-icon>
+            <input type="text" placeholder="Nombre Proyecto" id="project-name" required>
+          </div>
+          <span>Ingrese los correos institucionales</span>
+          <div class="container-input">
+            <ion-icon name="mail-outline"></ion-icon>
+            
+            <input type="email" placeholder="Correo Institucional" id="email-number1"  value="<%= user.email  %>" required>
+          </div>
+          <div class="container-input">
+            <ion-icon name="mail-outline"></ion-icon>
+            <input type="email" placeholder="Correo Institucional" id="email-number2">
+          </div>
+          <span>Seleccione el archivo en formato PDF</span>
+          <div class="container-input">
+            <ion-icon name="document-attach-outline"></ion-icon>
+            <input type="file" placeholder="Archivo" id="file-upload" accept="application/pdf" required>
+          </div>
+          <span>Ingrese el ciclo al cual pertenece</span>
+          <div class="container-input-radio">
+            <div>
+              <label for="radio-1">1 </label>
+              <input type="radio" name="ciclo" value="1" id="radio-1" required checked>
+  
+            </div>
+            <div>
+              <label for="radio-2">2 </label>
+              <input type="radio" name="ciclo" value="2" id="radio-2" required>
+  
+            </div>
+            <div>
+              <label for="radio-3">3</label>
+              <input type="radio" name="ciclo" value="3" id="radio-3" required>
+  
+            </div>
+  
+  
+          </div>
+          <div class="final-text">
+            <p id="final-text-paragraph"></p>
+          </div>
+          <% if (!userProject) { %>
+          <button type="button" class="button" id="button-send-project">ENVIAR</button>
+          <% }else if(userProject){ %>
+            <button class="button-update btn-hide" id="button-update-file" >ACTUALIZAR</button>
+            <%}%>
+        </form>    
+      </div>
   </div>
-
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
