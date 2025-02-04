@@ -87,6 +87,7 @@ body::before {
 .links a {
   text-decoration: none;
   color: var(--color-negro);
+  font-weight: 600;
 }
 
 .links a:hover {
@@ -121,24 +122,32 @@ body::before {
   background-color: #FFF;
   border-radius: 10px;
 }
-.amount-students h2{
+.amount-students h3{
   text-align: center;
-  font-size: clamp(0.5rem, 2vw, 2rem);
+  font-size: clamp(0.5rem, 2vw, 1.2rem);
   color: #707070;
+  text-transform: uppercase;
 }
 
-.amount-students-radio{
+.students-and-format{
   width: 80%;
   margin: 5px;
   padding: 3px;
   display: flex;
   justify-content: start;
   align-items: center;
+  flex-direction: row-reverse;
 }
 
-.amount-students-radio label{
+.students-and-format label{
   font-size: 18px;
-  margin-right: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.students-and-format input{
+ cursor: pointer;
+ height: 30px;
 }
 
 #button-students{
@@ -152,7 +161,7 @@ body::before {
 }
 
 #button-students:hover{
-  width: 50%;
+  width: 70%;
   background-color: var(--color-verde);
   color: var(--color-blanco);
   transition: 0.5s ease-in-out;

@@ -20,7 +20,7 @@
           <ul>
             <li><a href="/students/main">Página Principal</a></li>
             <li><a href="/students/projects">Entregar Proyectos</a></li>
-            <li><a href="/students/grades">Consultar Nota</a></li>
+            <li><a href="/students/grades">Consultar Entrega</a></li>
           </ul>
         </div>
         <div class="user">
@@ -38,14 +38,24 @@
 
     
       <form class="amount-students">
-        <h2>Cantidad de integrantes</h2>
-        <div class="amount-students-radio">
+        <h3>Cantidad de integrantes</h3>
+        <div class="students-and-format">
           <label for="input-radio-number1">1 </label>
           <input type="radio" name="radio-students" id="input-radio-number1" value="1" checked required>
         </div>
-        <div class="amount-students-radio">
+        <div class="students-and-format">
           <label for="input-radio-number2">2</label>
           <input type="radio" name="radio-students"  id="input-radio-number2" value="2" required>
+        </div>
+        <h3>Formato de Entrega</h3>
+        <div class="students-and-format">
+          <label for="input-radio-formato1">Formato Avance</label>
+          <input type="radio" name="radio-formato" id="input-radio-formato1" value="formato1" checked required>
+        </div>
+        
+        <div class="students-and-format">
+          <label for="input-radio-formato2">Formato IEEE</label>
+          <input type="radio" name="radio-formato" id="input-radio-formato2" value="formato2"  required>
         </div>
         <% if (!userProject) { %>
         <button id="button-students">ENVIAR</button>
