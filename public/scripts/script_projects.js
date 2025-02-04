@@ -7,7 +7,7 @@ const finalText = document.getElementById('final-text-paragraph');
 // Buttons
 const studentsButton = document.getElementById('button-students');
 const projectButton = document.getElementById('button-send-project');
-const updateButton = document.getElementById('button-update-file');
+const updateButton = document.getElementById('button-update-project');
 
 const finalDiv = document.querySelector('.final-text');
 
@@ -24,16 +24,24 @@ const sendProject = async (url, formdata) => {
   }
 };
 
-
 studentsButton.addEventListener('click', (e) => {
   e.preventDefault();
   displayAndHide();
 });
 
-projectButton.addEventListener('click', async (e) => {
-  e.preventDefault();
-  await getData();
-});
+
+if (projectButton !== null) {
+  projectButton.addEventListener('click', async (e) => {
+    e.preventDefault();
+    await getData();
+  });
+}
+
+if (updateButton !== null) {
+  updateButton.addEventListener('click', async (e) => {
+    e.preventDefault();
+  });
+}
 
 
 
@@ -67,11 +75,20 @@ async function getData () {
 }
 
 function displayAndHide () {
-  if (getSelectedRadio('radio-students') === '1') {
+  if (getSelectedRadio('radio-students') === '1' && getSelectedRadio('radio-formato') === 'formato1') {
     document.querySelector('.amount-students').style.display = 'none';
     document.getElementById('email-number2').style.display = 'none';
     document.querySelector('.form-container').style.display = 'block';
-  } else {
+    document.getElementById('slides').style.display = 'none';
+  } else if (getSelectedRadio('radio-students') === '2' && getSelectedRadio('radio-formato') === 'formato1') {
+    document.querySelector('.amount-students').style.display = 'none';
+    document.querySelector('.form-container').style.display = 'block';
+    document.getElementById('slides').style.display = 'none';
+  } else if (getSelectedRadio('radio-students') === '1' && getSelectedRadio('radio-formato') === 'formato2') {
+    document.querySelector('.amount-students').style.display = 'none';
+    document.getElementById('email-number2').style.display = 'none';
+    document.querySelector('.form-container').style.display = 'block';
+  } else if (getSelectedRadio('radio-students') === '2' && getSelectedRadio('radio-formato') === 'formato2') {
     document.querySelector('.amount-students').style.display = 'none';
     document.querySelector('.form-container').style.display = 'block';
   }

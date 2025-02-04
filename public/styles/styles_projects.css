@@ -207,6 +207,7 @@ body::before {
   text-align: center;
   font-size: 16px;
   margin-top: 10px;
+  text-transform: capitalize;
 }
 
 .container-input input {

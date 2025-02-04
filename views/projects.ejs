@@ -74,18 +74,25 @@
           <span>Ingrese los correos institucionales</span>
           <div class="container-input">
             <ion-icon name="mail-outline"></ion-icon>
-            
             <input type="email" placeholder="Correo Institucional" id="email-number1"  value="<%= user.email  %>" required>
           </div>
-          <div class="container-input">
+          <div class="container-input" id="email-number2">
             <ion-icon name="mail-outline"></ion-icon>
-            <input type="email" placeholder="Correo Institucional" id="email-number2">
+            <input type="email" placeholder="Correo Institucional" >
           </div>
           <span>Seleccione el archivo en formato PDF</span>
           <div class="container-input">
             <ion-icon name="document-attach-outline"></ion-icon>
             <input type="file" placeholder="Archivo" id="file-upload" accept="application/pdf" required>
           </div>
+          <div id="slides">
+            <span>Seleccione las diapositivas</span>
+            <div class="container-input">
+             <ion-icon name="document-attach-outline"></ion-icon>
+              <input type="file" placeholder="Archivo" id="file-upload" accept="application/pdf" required>
+            </div>
+          </div>
+          
           <span>Ingrese el ciclo al cual pertenece</span>
           <div class="container-input-radio">
             <div>
@@ -112,7 +119,7 @@
           <% if (!userProject) { %>
           <button type="button" class="button" id="button-send-project">ENVIAR</button>
           <% }else if(userProject){ %>
-            <button class="button-update btn-hide" id="button-update-file" >ACTUALIZAR</button>
+            <button type="button" class="button-update btn-hide" id="button-update-project">ACTUALIZAR</button>
             <%}%>
         </form>    
       </div>

@@ -94,6 +94,7 @@ body::before {
   text-decoration: none;
   color: var(--color-negro);
   text-align: center;
+  font-weight: 600;
 }
 
 .links a:hover{
