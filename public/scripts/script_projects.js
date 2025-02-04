@@ -1,6 +1,6 @@
 const projectNameValue = document.getElementById('project-name');
 const email1Value = document.getElementById('email-number1');
-const email2Value = document.getElementById('email-number2');
+const email2Value = document.getElementById('email-number2-txt');
 const fileInput = document.getElementById('file-upload');
 const finalText = document.getElementById('final-text-paragraph');
 
@@ -26,6 +26,7 @@ const sendProject = async (url, formdata) => {
 
 studentsButton.addEventListener('click', (e) => {
   e.preventDefault();
+  console.log(email2Value);
   displayAndHide();
 });
 
@@ -45,12 +46,14 @@ if (updateButton !== null) {
 
 
 
+
 async function getData () {
   const projectName = projectNameValue.value;
   const email1 = email1Value.value.trim();
   const email2 = email2Value.value.trim();
+
   const ciclo = getSelectedRadio('ciclo').trim();
-  const file = fileInput.files[0];
+  const file = fileInput.files[1];
 
   if (getSelectedRadio('radio-students') === '1') {
     if (!projectName || !email1 || !ciclo || !file) {
@@ -80,10 +83,12 @@ function displayAndHide () {
     document.getElementById('email-number2').style.display = 'none';
     document.querySelector('.form-container').style.display = 'block';
     document.getElementById('slides').style.display = 'none';
+    document.getElementById('span-slides').style.display = 'none';
   } else if (getSelectedRadio('radio-students') === '2' && getSelectedRadio('radio-formato') === 'formato1') {
     document.querySelector('.amount-students').style.display = 'none';
     document.querySelector('.form-container').style.display = 'block';
     document.getElementById('slides').style.display = 'none';
+    document.getElementById('span-slides').style.display = 'none';
   } else if (getSelectedRadio('radio-students') === '1' && getSelectedRadio('radio-formato') === 'formato2') {
     document.querySelector('.amount-students').style.display = 'none';
     document.getElementById('email-number2').style.display = 'none';

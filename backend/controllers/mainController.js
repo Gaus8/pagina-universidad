@@ -1,8 +1,6 @@
 import { validateProject, validateProjectPartial } from '../esquema/validateProject.js';
 import { uploadFile } from '../database/dropbox.js';
 import Projects from '../esquema/projectSchema.js';
-import dayjs from 'dayjs';
-import { date } from 'zod';
 
 export const sendProject = async (req, res) => {
   const { email2 } = req.body;
@@ -10,6 +8,23 @@ export const sendProject = async (req, res) => {
     await validateOneEmail(req, res);
   } else {
     await validateDoubleEmail(req, res);
+  }
+};
+
+
+const updateFile = async (req, res) => {
+  const { ciclo } = req.body;
+  const validar = validateProjectPartial(req.body);
+  if (validar.error) {
+    return res.status(400).json({
+      status: 'error',
+      error: JSON.parse(validar.error.message)
+    });
+  }
+  if (validar.data.email2) {
+    if (validar.data.email1 === validar.data.email2) {
+      return res.status(400).json({ message: 'Los correos no pueden ser los mismos' });
+    }
   }
 };
 
@@ -99,32 +114,8 @@ async function saveProject (project) {
 async function validateNewProject (project) {
   const findProject = await Projects.findOne({ email1: project.email1 });
   if (findProject) {
-    return true; // Ya existe el proyecto
+    return true;
   }
-  return false; // No existe el proyecto
+  return false;
 }
 
-export const changeRoute = (ruta) => async (req, res) => {
-  try {
-    const email = req.user.email;
-    if (!email) {
-      return res.status(403).json({ message: 'No autorizado' });
-    }
-
-    const projects = await Projects.findOne({
-      $or: [{ email1: email }, { email2: email }]
-    });
-
-    let date = '';
-
-    if (projects && projects.fecha) {
-      dayjs.locale('es'); // Establecer el idioma español
-      date = dayjs(projects.fecha).format('DD MMM YYYY hh:mm A');
-    }
-
-    res.render(ruta, { user: req.user, userProject: projects, date });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error al obtener proyectos' });
-  }
-};

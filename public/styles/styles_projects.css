@@ -196,12 +196,12 @@ body::before {
   background-color: var(--color-gris);
   border: 2px solid var(--color-gris);
   border-radius: 6px;
-
 }
 .container-input ion-icon{
   margin-left: 10px;
   padding: 5px;
 }
+
 .container-input span {
   display: block;
   text-align: center;
