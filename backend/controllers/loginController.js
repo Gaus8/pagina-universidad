@@ -1,5 +1,5 @@
-import { validateLoginUser } from '../esquema/validateString.js';
-import User from '../esquema/userSchema.js';
+import { validateLoginUser } from '../schema/validateString.js';
+import User from '../schema/userSchema.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 

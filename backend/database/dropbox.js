@@ -3,7 +3,10 @@ import fetch from 'node-fetch';
 import multer from 'multer';
 
 const storage = multer.memoryStorage();
-export const upload = multer({ storage });
+export const upload = multer({ storage }).fields([
+  { name: 'file', maxCount: 1 },
+  { name: 'slides', maxCount: 1 }
+]);
 
 
 const TOKEN = process.env.TOKEN_DROPBOX;
@@ -13,10 +16,10 @@ const dbx = new Dropbox({
 });
 
 
-export const uploadFile = async (ruta, req) => {
+export const uploadFile = async (ruta, file) => {
   const response = await dbx.filesUpload({
     path: ruta,
-    contents: req.file.buffer,
+    contents: file.buffer,
     mode: { '.tag': 'overwrite' } // Sobreescribe si ya existe
   });
 

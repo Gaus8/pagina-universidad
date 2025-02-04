@@ -1,6 +1,6 @@
-import { validateProject, validateProjectPartial } from '../esquema/validateProject.js';
+import { validateProject, validateProjectPartial } from '../schema/validateProject.js';
 import { uploadFile } from '../database/dropbox.js';
-import Projects from '../esquema/projectSchema.js';
+import Projects from '../schema/projectSchema.js';
 
 export const sendProject = async (req, res) => {
   const { email2 } = req.body;
@@ -43,14 +43,24 @@ const validateOneEmail = async (req, res) => {
     return res.status(400).json({ message: 'Este email ya registro un proyecto' });
   }
 
-  const url = await uploadFile(`/ciclo${ciclo}/${req.file.originalname}`, req);
-  if (url.error) {
+  const file = req.files.file ? req.files.file[0] : null;
+  const slides = req.files.slides ? req.files.slides[0] : null;
+
+  const fileUrl = file ? await uploadFile(`/ciclo${ciclo}/${file.originalname}`, file) : null;
+  if (fileUrl.error) {
     return res.status(400).json({ message: 'Este documento ya ha sido guardado' });
   }
+
+  const slidesUrl = slides ? await uploadFile(`/diapositivas_ciclo${ciclo}/${slides.originalname}`, slides) : null;
+  if (slides !== null && slidesUrl.error) {
+    return res.status(400).json({ message: 'Este documento ya ha sido guardado' });
+  }
+
   const newProject = {
     projectName: validar.data.projectName.toUpperCase(),
     email1: validar.data.email1,
-    url,
+    fileUrl,
+    slidesUrl,
     ciclo
   };
 
@@ -80,15 +90,26 @@ const validateDoubleEmail = async (req, res) => {
     return res.status(400).json({ message: 'Los correos ya registraron un proyecto' });
   }
 
-  const url = await uploadFile(`/ciclo${ciclo}/${req.file.originalname}`, req);
-  if (!url) {
+  const file = req.files.file ? req.files.file[0] : null;
+  const slides = req.files.slides ? req.files.slides[0] : null;
+
+  const fileUrl = file ? await uploadFile(`/ciclo${ciclo}/${file.originalname}`, file) : null;
+  if (fileUrl.error) {
     return res.status(400).json({ message: 'Este documento ya ha sido guardado' });
   }
+
+  const slidesUrl = slides ? await uploadFile(`/diapositivas_ciclo${ciclo}/${slides.originalname}`, slides) : null;
+  if (slides !== null && slidesUrl.error) {
+    return res.status(400).json({ message: 'Este documento ya ha sido guardado' });
+  }
+
+
   const newProject = {
     projectName: validar.data.projectName.toUpperCase(),
     email1: validar.data.email1,
     email2: validar.data.email2,
-    url,
+    fileUrl,
+    slidesUrl,
     ciclo
   };
 

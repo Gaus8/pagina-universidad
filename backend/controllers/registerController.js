@@ -1,8 +1,8 @@
 
-import { validateRegisterUser } from '../esquema/validateString.js';
+import { validateRegisterUser } from '../schema/validateString.js';
 import bcrypt from 'bcrypt';
 
-import User from '../esquema/userSchema.js';
+import User from '../schema/userSchema.js';
 
 export const registerUser = async (req, res) => {
   const { name, email, password, role } = req.body;

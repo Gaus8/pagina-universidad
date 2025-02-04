@@ -13,12 +13,16 @@ const projectSchema = mongoose.Schema({
   },
 
   email2: {
-    type: String,
+    type: String
   },
 
-  url: {
+  fileUrl: {
     type: String,
     required: true
+  },
+
+  slidesUrl: {
+    type: String
   },
 
   ciclo: {

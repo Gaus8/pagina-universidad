@@ -1,4 +1,4 @@
-import Projects from '../esquema/projectSchema.js';
+import Projects from '../schema/projectSchema.js';
 import dayjs from 'dayjs';
 
 export const renderRoutes = (ruta) => async (req, res) => {
