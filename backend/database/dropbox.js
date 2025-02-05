@@ -34,6 +34,7 @@ export const uploadFile = async (ruta, file) => {
     }
   }
 };
+
 export const deleteFileByLink = async (sharedLink) => {
   try {
     const metadata = await dbx.sharingGetSharedLinkMetadata({ url: sharedLink });

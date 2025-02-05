@@ -35,17 +35,18 @@ studentsButton.addEventListener('click', (e) => {
 if (sendProjectButton !== null) {
   sendProjectButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    await getData();
+    await getDataPost();
   });
 }
 
 if (updateProjectButton !== null) {
   updateProjectButton.addEventListener('click', async (e) => {
     e.preventDefault();
+    await getDataPatch();
   });
 }
 
-async function getData () {
+async function getDataPost () {
   const radioStudents = getSelectedRadio('radio-students');
   const radioFormat = getSelectedRadio('radio-formato');
   const projectName = projectNameinput.value;
@@ -142,4 +143,58 @@ function cleanFields () {
 };
 
 
+const updateProject = async (url, formdata) => {
+  try {
+    const response = await fetch(url, {
+      method: 'PATCH',
+      body: formdata
+    });
+    const result = await response.json();
+    getResponse(response, result);
+  } catch (error) {
+    finalText.style.color = 'red';
+    finalText.innerHTML = 'Error al enviar el archivo';
+  }
+};
 
+async function getDataPatch () {
+  const radioStudents = getSelectedRadio('radio-students');
+  const radioFormat = getSelectedRadio('radio-formato');
+  const projectName = projectNameinput.value;
+  const email1 = email1Input.value.trim();
+  const email2 = email2Input.value.trim();
+  const ciclo = getSelectedRadio('ciclo').trim();
+  const file = fileInput.files[0];
+  const slides = slideInput.files[0];
+
+  if (radioStudents === '1' && radioFormat === 'formato1') {
+    if (!projectName || !email1 || !ciclo || !file) {
+      return window.alert('Asegurese de llenar todos los campos');
+    }
+  } else if (radioStudents === '1' && radioFormat === 'formato2') {
+    if (!projectName || !email1 || !ciclo || !file || !slides) {
+      return window.alert('Asegurese de llenar todos los campos');
+    }
+  } else if (radioStudents === '2' && radioFormat === 'formato1') {
+    if (!projectName || !email1 || !email2 || !ciclo || !file) {
+      return window.alert('Asegurese de llenar todos los campos');
+    }
+  } else {
+    if (!projectName || !email1 || !email2 || !ciclo || !file || !slides) {
+      return window.alert('Asegurese de llenar todos los campos');
+    }
+  }
+
+  const formData = new FormData();
+  formData.append('projectName', projectName);
+  formData.append('email1', email1);
+  if (email2 !== '') formData.append('email2', email2);
+  formData.append('ciclo', ciclo);
+  formData.append('file', file);
+  if (slides) formData.append('slides', slides);
+  
+  finalDiv.style.display = 'block';
+  finalText.style.color = 'green';
+  finalText.innerHTML = 'Enviando proyecto ...';
+  await updateProject('/students/projects', formData);
+}
