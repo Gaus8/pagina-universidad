@@ -35,8 +35,6 @@ studentsButton.addEventListener('click', (e) => {
 if (sendProjectButton !== null) {
   sendProjectButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    const slides = slideInput.files[1];
-    console.log(slides);
     await getData();
   });
 }
@@ -78,14 +76,11 @@ async function getData () {
   const formData = new FormData();
   formData.append('projectName', projectName);
   formData.append('email1', email1);
-  formData.append('email2', email2);
+  if (email2 !== '') formData.append('email2', email2);
   formData.append('ciclo', ciclo);
   formData.append('file', file);
-  if (slides) {
-    formData.append('slides', slides);
-  }
-
-
+  if (slides) formData.append('slides', slides);
+  
   finalDiv.style.display = 'block';
   finalText.style.color = 'green';
   finalText.innerHTML = 'Enviando proyecto ...';
@@ -106,8 +101,8 @@ function getResponse (response, result) {
   finalText.innerHTML = result.message;
   setTimeout(() => {
     cleanFields();
-  }, 10000);
-  window.location.href = '/students/projects';
+    window.location.href = '/students/projects';
+  }, 3000);
   return true;
 };
 
