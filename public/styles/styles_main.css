@@ -1,34 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Poppins:wght@400;600;700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins",serif;
-    font-weight: 600;
-    font-style: normal;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
 }
-:root{
-  --color-verde:#129e29;
-  --color-blanco:#FFF;
-  --color-negro:#161414;
+
+:root {
+  --color-verde: #129e29;
+  --color-blanco: #FFF;
+  --color-negro: #161414;
   --color-azul: #23e0d1;
   --color-gris: #f3eeee;
 }
-body{
+
+body {
   background-color: var(--color-blanco);
 }
-.container{
+
+.container {
   width: 100%;
   height: 100%;
 }
 
-.header{
+.header {
   width: 100%;
-  background-color:var(--color-gris);
+  background-color: var(--color-gris);
   position: sticky;
 }
 
-.navigation-bar{
+.navigation-bar {
   margin: 0 auto;
   padding: 5px;
   width: 70%;
@@ -38,63 +42,50 @@ body{
   flex-direction: row;
 }
 
-.image{
+.image {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.image img{
+.image img {
   width: 200px;
- 
+
 }
 
 .links {
   height: 100%;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
 }
 
-.links ul{
+.links ul {
   list-style: none;
   display: flex;
   gap: 30px;
 }
 
-.links li{
+.links li {
   justify-content: center;
   margin-right: 10px;
   align-items: center;
   font-size: 18px;
 }
 
-.links a{
+.links a {
   text-decoration: none;
   color: var(--color-negro);
   text-align: center;
 }
 
-.links a:hover{
+.links a:hover {
   text-decoration: none;
   color: var(--color-verde);
 }
 
-.user{
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  border: 2px solid red;
-  cursor: pointer;
-}
-
-.user img {
-  width: 45px;
-}
-.texto{
+.texto {
   margin: 20px auto;
 }
 
@@ -105,25 +96,25 @@ h1 {
   font-style: italic;
 }
 
-p{
+p {
   color: #707070;
   font-size: clamp(1rem, 1.5vw, 2rem);
   text-align: center;
   font-style: italic;
 }
 
-.fondo-image{
+.fondo-image {
   width: 60%;
   height: 600px;
   margin: 0 auto;
 }
 
-.fondo-image-img{
+.fondo-image-img {
   width: 90%;
   height: 100%;
   margin: 0 auto;
-  background-image: url('/img/imagen_fondo_universidad.png'); 
-  background-size: cover; 
+  background-image: url('/img/imagen_fondo_universidad.png');
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: 5px 5px 15px var(--color-azul);
@@ -133,7 +124,7 @@ p{
   align-items: center;
 }
 
-.fondo-image-text{
+.fondo-image-text {
   width: 60%;
   height: 200px;
   padding: 10px;
@@ -142,9 +133,9 @@ p{
   border-radius: 5px;
 }
 
-.link-files{
+.link-files {
   margin: 40px auto;
-  width:40%;
+  width: 40%;
   height: auto;
   display: grid;
   grid-template-columns: repeat(3, 0.5fr);
@@ -154,28 +145,28 @@ p{
   padding: 10px;
 }
 
-.files{
+.files {
   border: 2px solid #6b6b6b;
   padding: 5px;
-  text-align: center; 
+  text-align: center;
   border-radius: 10px;
   width: 60%;
   height: auto;
   min-width: 70px;
 }
 
-.files:hover{
+.files:hover {
   border: 2px solid var(--color-verde);
 }
 
-.link-img{
- width: 70%;
- height: auto;
+.link-img {
+  width: 70%;
+  height: auto;
 
 }
 
 @media screen and (max-width: 1280px) {
-  .link-files{
+  .link-files {
     display: grid;
     grid-template-columns: repeat(2, 0.5fr);
     justify-items: center;
@@ -185,6 +176,20 @@ p{
   }
 }
 
+/*IMAGE USER*/
+.user {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.user img {
+  width: 45px;
+}
+
 .dropdown {
   display: none;
   position: absolute;
@@ -192,7 +197,7 @@ p{
   top: 60px;
   right: 20px;
   width: 300px;
-  background:linear-gradient(135deg, #D8E8F9, #FAF3E0);
+  background: linear-gradient(135deg, #D8E8F9, #FAF3E0);
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 10px;
@@ -200,24 +205,29 @@ p{
   width: 400px;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-weight: 500;
 }
 
-.dropdown-name{
-  width:100%;
+.dropdown-name {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
 
-.dropdown-name h4{
-  font-size: clamp(0.5rem,1.5vw, 1.2rem);
+.dropdown-name h4 {
+  font-size: 24px;
   margin-right: 10px;
+}
+
+.dropdown-name img{
+ width: 60px;
 }
 
 .dropdown-options {
@@ -278,6 +288,6 @@ p{
   background: #cecccc;
 }
 
-.dropdown-email{
-  font-size: clamp(0.5rem, 1.5vw, 1rem);
+.dropdown-email {
+  font-size: 16px;
 }
