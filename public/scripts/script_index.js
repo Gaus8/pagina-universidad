@@ -3,6 +3,7 @@ const botonInicio = document.getElementById('boton-inicio-sesion');
 const passwordValue = document.getElementById('password-login');
 const emailValue = document.getElementById('email-login');
 const errorText = document.getElementById('error-login');
+
 const loginUser = async (url, data = {}) => {
   const response = await fetch(url, {
     method: 'POST',
@@ -14,11 +15,22 @@ const loginUser = async (url, data = {}) => {
 
   const responseData = await response.json();
   if (response.ok) {
-    console.log(responseData.name);
     window.alert(responseData.message);
-    return setTimeout(() => {
-      window.location.href = '/students/main';
-    }, 500);
+    if (responseData.role === 'student') {
+      return setTimeout(() => {
+        window.location.href = '/students/main';
+      }, 500);
+    }
+    else if (responseData.role === 'teacher') {
+      return setTimeout(() => {
+        window.location.href = '/professor/main';
+      }, 500);
+    }
+    else if (responseData.role === 'admin') {
+      return setTimeout(() => {
+        window.location.href = '/admin/main';
+      }, 500);
+    }
   }
 
   if (responseData.status === 'error') {

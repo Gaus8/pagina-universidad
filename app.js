@@ -5,7 +5,7 @@ import { routerRegister } from './backend/routes/registerRoutes.js';
 import { routerLogin } from './backend/routes/loginRoutes.js';
 import { connectionDb } from './backend/database/dbConnection.js';
 import { routerMainPage } from './backend/routes/studentsRoutes.js';
-
+import { routerProffesor } from './backend/routes/professorRoutes.js';
 connectionDb();
 
 const app = express();
@@ -14,6 +14,7 @@ app.use(express.json());
 app.use('/register', routerRegister);
 app.use('/', routerLogin);
 app.use('/students', routerMainPage);
+app.use('/professor', routerProffesor);
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 

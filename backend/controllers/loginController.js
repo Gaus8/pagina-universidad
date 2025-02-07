@@ -56,8 +56,7 @@ const validateLogin = async (req, res) => {
     .status(200).json({
       status: 'success',
       message: 'Ingreso Exitoso',
-      name: user.name
-
+      role: user.role
     });
 };
 
