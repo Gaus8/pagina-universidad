@@ -25,7 +25,26 @@
           </ul>
         </div>
         <div class="user">
-          <a href="#"><img src="/img/imagen_perfil.png" alt="Logo perfil"></a>
+          <img src="/img/imagen_perfil.png" alt="Logo perfil" id="profile-icon">
+          <div class="dropdown" id="dropdown-menu">
+            <div class="dropdown-menu">
+              <div class="dropdown-name">
+                  <h4>Hola, <%= user.name %></h4>
+                  <img src="/img/image_greeting.png" alt="greeting-image">              
+              </div>
+              <div class="dropdown-options">
+                <div class="dropdown-options-password">
+                  <a href="#">Cambiar Contraseña</a>
+                </div>
+                <div class="dropdown-options-logout">
+                  <a href="#">Cerrar sesión</a>
+                </div>
+              </div>
+           
+              <p class="dropdown-email"><%= user.email%></p>
+            </div>
+           
+          </div>
         </div>
       </nav>
     </header>
@@ -71,11 +90,6 @@
       </div>
     </div>
 
-    <div>
-      <p>ID <%= user.id %></p>
-      <p>Email <%= user.email %></p>
-      
-    </div>
 
   </div>
   <script src="/scripts/script_main.js" type="module"></script>
