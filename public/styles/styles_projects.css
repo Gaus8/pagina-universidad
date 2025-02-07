@@ -301,6 +301,72 @@ body::before {
   color: #e20000;
 }
 
+.user{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user img {
+  width: 50px;
+}
+
+.display-info {
+  background: linear-gradient(135deg, #D8E8F9, #FAF3E0);
+  width: 40%;
+  height: 60%;
+  margin: auto;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.display-info h1 {
+  margin: 20px auto;
+  font-size: clamp(1rem, 10vw, 2rem); 
+  color: var(--color-verde);
+  text-align: center;
+  font-weight: 600;
+}
+
+.display-info ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.display-info li{
+  text-align: center;
+  margin: 10px;
+  font-size: clamp(0.5rem, 2.5vw, 1.2rem); 
+}
+
+.main-text{
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-right: 10px;
+  font-size: clamp(0.5rem, 1.5vw, 1.2rem); 
+  color: #707070;
+}
+.img-project {
+  width: 8%;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  margin: 10px auto; 
+
+}
+
+.img-project img {
+  width: 100%; /* Ajusta el tamaño de la imagen */
+  height: auto; /* Mantiene la proporción */
+  display: block; /* Evita espacios adicionales */
+}
+
 /*IMAGE USER*/
 
 .user{
