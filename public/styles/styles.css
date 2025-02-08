@@ -1,19 +1,18 @@
+/*TIPO DE LETRA ROBOTO IMPORTADA DE GOOGLE FONTS*/
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
-    overflow: hidden;
+    font-family: "Roboto", serif;
 }
 
-:root {
-    --color-verde: #129e29;
-    --color-blanco: #FFF;
+:root{
+    --color-verde:#129e29;
+    --color-blanco:#FFF;
 }
 
-body {
+body{
     width: 100%;
     height: 100vh;
     display: flex;
@@ -22,13 +21,15 @@ body {
     background-image: url("/img/fondo_universidad.png");
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -100;
+    z-index: -100;  
 }
 
-.container {
+.container{
     border: 2px solid rgb(196, 193, 193);
     width: 50%;
-    height: 60%;
+    height:60%;
+    min-width: 700px;
+    min-height: 400px;
     border-radius: 6px;
     background-color: var(--color-blanco);
     display: flex;
@@ -37,30 +38,28 @@ body {
     position: relative;
 }
 
-.form-container {
+.form-container{
     width: 100%;
     overflow: hidden;
 }
 
-.form-container form {
+.form-container form{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: transform 0.5s ease-in-out;
+    
 }
 
-.form-container h2 {
-    font-size: clamp(0.8rem, 2vw, 1.3rem);
-    text-align: center;
-    margin: 10px auto;
+.form-container h2{
+    font-size: 28px;
+    margin:10px auto;
 }
 
-.form-container p {
-    font-size: clamp(0.7rem, 2vw, 1rem);
-    text-align: center;
-    margin: 10px auto;
+span{
+    font-size: 16px;
     margin-top: 10px;
     margin-bottom: 15px;
 }
@@ -80,7 +79,6 @@ body {
 }
 
 .container-input input{
-    font-size: clamp(0.5rem, 2vw, 0.8rem);
     border: none;
     outline: none;
     width: 100%;
@@ -106,17 +104,17 @@ body {
 }
 
 .container-texto img{
-    width: 20%;
+    width: 70px;
     margin: 20px auto;
   }
   
 .container-texto h3{
-    font-size: clamp(1rem, 2vw, 1.7rem);
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
 .container-texto p{
-    font-size: clamp(0.7rem, 2vw, 1rem);
+    font-size: 20px;
     margin-bottom: 20px;
 }
 
@@ -161,95 +159,3 @@ body {
   justify-content: start;
   align-items: center;
 }
-
-@media screen and (max-width:600px) {
-    .container {
-        min-width: 70%;
-        height: 70%;
-        flex-direction: column-reverse;
-    }
-
-    .form-container{
-        height: 70%;
-    }
-    .container-input {
-        margin-top: 2px;
-    }
-    
-    .container-texto {
-        height: 50%;
-    }
-
-    .container-texto img {
-        width: 10%;
-    }
-
-    .btn{
-        margin-top: 0;
-        height: 35px;
-    }
-}
-
-
-@media screen and (max-width:1000px) {
-    .container {
-        max-width: 70%;
-        height: 70%;
-        flex-direction: column-reverse;
-    }
-
-    .form-container{
-        height: 70%;
-    }
-    .container-input {
-        margin-top: 2px;
-        margin-bottom: 2px;
-    }
-    
-    .container-texto {
-        height: 50%;
-    }
-
-    .container-texto img {
-        width: 8%;
-    }
-
-    .btn{
-        margin-top: 0;
-        height: 35px;
-    }
-
-}
-
-@media screen and (max-width:1280px) {
-    .container {
-        max-width: 40%;
-        height: 70%;
-        flex-direction: column-reverse;
-    }
-
-    .form-container{
-        height: 70%;
-    }
-    .container-input {
-        margin-top: 2px;
-        margin-bottom: 2px;
-    }
-    
-    .container-texto {
-        height: 50%;
-    }
-
-    .container-texto img {
-        width: 8%;
-    }
-
-    .btn{
-        margin-top: 0;
-        height: 35px;
-    }
-
-}
-
-
-
