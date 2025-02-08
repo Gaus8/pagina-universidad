@@ -38,7 +38,6 @@ body{
 
 .form-container{
     width: 100%;
-    overflow: hidden;
 }
 
 .form-container form{
@@ -191,7 +190,7 @@ body{
 @media screen and (max-width:1000px) {
     .container {
         max-width: 70%;
-        max-height: 60%;
+        max-height: 70%;
         flex-direction: column-reverse;
     }
 
