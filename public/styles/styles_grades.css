@@ -117,3 +117,9 @@ body::before {
     width:60%;
   }
 }
+
+@media screen and (max-height:400px) {
+  .display-info {
+    min-height: 70%;
+  }
+}

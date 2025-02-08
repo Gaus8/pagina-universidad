@@ -4,7 +4,7 @@ export const validateToken = (req, res, next) => {
   const token = req.cookies.access_token;
 
   if (!token) {
-    return res.status(403).json({ message: 'ACCESS NO AUTHORIZED' });
+    return res.status(403).json({ message: 'Ingreso Invalido, inicie sesión' });
   }
 
   try {

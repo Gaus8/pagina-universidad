@@ -230,5 +230,9 @@
   .dropdown {
     width: 200px;
   }
+
+  .dropdown-options {
+    height: 40px;
+  }
 }
 

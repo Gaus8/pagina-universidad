@@ -18,6 +18,10 @@ app.use('/professor', routerProffesor);
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
+app.post('/logout', (req, res) => {
+  res.clearCookie('access_token', { path: '/' });
+  res.status(200).json({ message: 'Sesión cerrada' });
+});
 
 const PORT = process.env.PORT || 5000;
 

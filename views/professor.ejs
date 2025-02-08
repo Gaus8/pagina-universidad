@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles_header.css">
   <link rel="stylesheet" href="/styles/styles_main.css">
   <title>Proyectos de Gestión</title>
 </head>
@@ -33,13 +34,12 @@
               </div>
               <div class="dropdown-options">
                 <div class="dropdown-options-password">
-                  <a href="#">Cambiar Contraseña</a>
+                  <a id="change-password" href="#">Cambiar Contraseña</a>
                 </div>
-                <div class="dropdown-options-logout">
+                <div id="logout" class="dropdown-options-logout">
                   <a href="#">Cerrar sesión</a>
                 </div>
               </div>
-           
               <p class="dropdown-email"><%= user.email%></p>
             </div>
           </div>
