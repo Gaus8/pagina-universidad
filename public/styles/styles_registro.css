@@ -67,8 +67,6 @@ body {
 .container-input{
     width: 70%;
     height: 35px;
-    margin-top: 10px;   
-    margin-bottom: 10px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,11 +83,6 @@ body {
     width: 100%;
     height: 100%;
     background-color: inherit;
-}
-
-.form-container a{
-    color: rgb(75, 75, 75);
-    margin: 15px auto;
 }
 
 .container-texto{

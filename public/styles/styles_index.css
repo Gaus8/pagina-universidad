@@ -1,18 +1,18 @@
-/*TIPO DE LETRA ROBOTO IMPORTADA DE GOOGLE FONTS*/
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", serif;
+    font-family: "Roboto", sans-serif;
 }
 
-:root{
-    --color-verde:#129e29;
-    --color-blanco:#FFF;
+:root {
+    --color-verde: #129e29;
+    --color-blanco: #FFF;
 }
 
-body{
+body {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -21,13 +21,13 @@ body{
     background-image: url("/img/fondo_universidad.png");
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -100;  
+    z-index: -100;
 }
 
-.container{
+.container {
     border: 2px solid rgb(196, 193, 193);
     width: 50%;
-    height:60%;
+    height: 60%;
     border-radius: 6px;
     background-color: var(--color-blanco);
     display: flex;
@@ -36,17 +36,18 @@ body{
     position: relative;
 }
 
-.form-container{
+.form-container {
     width: 100%;
+    overflow: hidden;
 }
 
-.form-container form{
+.form-container form {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: transform 0.5s ease-in-out; 
+    transition: transform 0.5s ease-in-out;
 }
 
 .form-container h2 {
@@ -63,19 +64,9 @@ body{
     margin-bottom: 15px;
 }
 
-.form-container a {
-    font-size: clamp(0.7rem, 2vw, 1rem);
-    text-align: center;
-    margin: 10px auto;
-    margin-top: 10px;
-    margin-bottom: 15px;
-}
-
 .container-input{
     width: 70%;
     height: 35px;
-    margin-top: 10px;   
-    margin-bottom: 10px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,9 +85,39 @@ body{
     background-color: inherit;
 }
 
+.form-container a {
+    font-size: clamp(0.7rem, 2vw, 1rem);
+    text-align: center;
+    margin: 10px auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.container-input{
+    width: 70%;
+    height: 35px;
+    margin: 10px auto;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0 15px;
+    gap:8px;
+    background-color: #EEEEEE;
+    border-radius: 5px;    
+}
+
+.container-input input{
+    font-size: clamp(0.5rem, 2vw, 0.8rem);
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+}
+
 .form-container a{
     color: rgb(75, 75, 75);
-    margin: 15px auto;
+    margin: 1px auto;
 }
 
 .container-texto{
@@ -176,7 +197,7 @@ body{
     }
 
     .form-container{
-        height: 70%;
+        height: 50%;
     }
     .container-input {
         margin-top: 2px;
@@ -205,7 +226,7 @@ body{
     }
 
     .form-container{
-        height: 70%;
+        height: 50%;
     }
     .container-input {
         margin-top: 2px;
@@ -235,7 +256,7 @@ body{
     }
 
     .form-container{
-        height: 70%;
+        height: 50%;
     }
     .container-input {
         margin-top: 2px;
@@ -256,6 +277,5 @@ body{
     }
 
 }
-
 
 
