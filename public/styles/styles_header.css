@@ -38,7 +38,7 @@
 
 .image {
   height: 100%;
-  width: 15%;
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,9 +70,9 @@
 
 .links a {
   text-decoration: none;
-  font-weight: 600;
   color: var(--color-negro);
   text-align: center;
+  font-weight: 600;
 }
 
 .links a:hover {
@@ -105,13 +105,12 @@
   cursor: auto;
   top: 60px;
   right: 20px;
-  width: 300px;
+  width: 400px;
   background: linear-gradient(135deg, #D8E8F9, #FAF3E0);
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  width: 400px;
 }
 
 .dropdown-menu {
@@ -131,7 +130,7 @@
 }
 
 .dropdown-name h4 {
-  font-size: 24px;
+  font-size: clamp(0.5rem, 1.5vw, 1rem); 
   margin-right: 10px;
 }
 
@@ -176,6 +175,7 @@
   background: var(--color-blanco);
   border-radius: 20px 2px 2px 20px;
   color: #202124;
+  font-size: clamp(0.5rem, 1.5vw, 0.8rem); 
 }
 
 .dropdown-options-logout a {
@@ -187,6 +187,7 @@
   background: var(--color-blanco);
   border-radius: 2px 20px 20px 2px;
   color: #202124;
+  font-size: clamp(0.5rem, 1.5vw, 0.8rem); 
 }
 
 .dropdown-options a:hover {
@@ -199,6 +200,9 @@
 
 .dropdown-email {
   font-size: 16px;
+  font-style: italic;
+  color: #707070;
+  font-size: clamp(0.5rem, 1.5vw, 0.8rem); 
 }
 
 @media screen and (max-width: 1280px) {
@@ -222,6 +226,9 @@
 
   .links li {
     font-size: clamp(0.5rem, 2vw, 1.2rem);
+  }
+  .dropdown {
+    width: 200px;
   }
 }
 

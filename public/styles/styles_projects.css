@@ -40,6 +40,11 @@ body::before {
   color: var(--color-verde);
 }
 
+
+.text h1 {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+}
+/*Cantidad de estudiantes*/
 .amount-students{
   margin: 15px auto;
   display: flex;
@@ -47,10 +52,14 @@ body::before {
   align-items: center;
   flex-direction: column;
   width: 20%;
+  min-width: 300px;
+  min-height: 10px;
   background-color: #FFF;
   border-radius: 10px;
 }
+
 .amount-students h3{
+  margin: 10px;
   text-align: center;
   font-size: clamp(0.5rem, 2vw, 1.2rem);
   color: #707070;
@@ -68,7 +77,8 @@ body::before {
 }
 
 .students-and-format label{
-  font-size: 18px;
+  font-size: clamp(0.3rem, 2vw, 1rem);
+  font-weight: 400;
   margin-left: 10px;
   cursor: pointer;
 }
@@ -76,11 +86,13 @@ body::before {
 .students-and-format input{
  cursor: pointer;
  height: 30px;
+ min-width: 2%;
 }
 
 #button-students{
   height: 50px;
   margin: 10px;
+  font-size: clamp(0.3rem, 2vw, 1rem);
   border-radius: 5px;
   border: none;
   background-color: var(--color-blanco);
@@ -94,6 +106,8 @@ body::before {
   color: var(--color-blanco);
   transition: 0.5s ease-in-out;
 }
+
+/*Registro de proyectos*/
 
 .form-container {
   margin: 0 auto;
@@ -125,6 +139,7 @@ body::before {
   border: 2px solid var(--color-gris);
   border-radius: 6px;
 }
+
 .container-input ion-icon{
   margin-left: 10px;
   padding: 5px;
@@ -214,7 +229,6 @@ body::before {
     
 }
 
-
 .final-text {
   margin: 15px;
   display: flex;
@@ -229,69 +243,15 @@ body::before {
   color: #e20000;
 }
 
-.user{
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.user img {
-  width: 50px;
+@media screen and (max-width:600px) {
+  .form-container{
+    min-width: 80%;
+  }
 }
-
-.display-info {
-  background: linear-gradient(135deg, #D8E8F9, #FAF3E0);
-  width: 40%;
-  height: 60%;
-  margin: auto;
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-}
-.display-info h1 {
-  margin: 20px auto;
-  font-size: clamp(1rem, 10vw, 2rem); 
-  color: var(--color-verde);
-  text-align: center;
-  font-weight: 600;
-}
-
-.display-info ul{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  list-style-type: none;
-}
-
-.display-info li{
-  text-align: center;
-  margin: 10px;
-  font-size: clamp(0.5rem, 2.5vw, 1.2rem); 
-}
-
-.main-text{
-  font-weight: 600;
-  text-transform: uppercase;
-  margin-right: 10px;
-  font-size: clamp(0.5rem, 1.5vw, 1.2rem); 
-  color: #707070;
-}
-.img-project {
-  width: 8%;
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  margin: 10px auto; 
-
-}
-
-.img-project img {
-  width: 100%; /* Ajusta el tamaño de la imagen */
-  height: auto; /* Mantiene la proporción */
-  display: block; /* Evita espacios adicionales */
+@media screen and (max-width:1280px) {
+  .form-container{
+    width: 45%;
+  }
 }
 

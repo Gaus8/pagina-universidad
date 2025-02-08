@@ -60,7 +60,6 @@
 
 
         <div class="display-info">
-
           <h1>CALIFICACIÓN PROYECTO DE GESTIÓN</h1>
           <p class="main-text">Descargar Proyecto</p>
           <div class="img-project">
@@ -69,41 +68,41 @@
           </div>
           <ul>
             <li><span class="main-text">Nombre del proyecto:</span>
-              <%= userProject.projectName %>
+              <span class="display-text"> <%= userProject.projectName %> </span>
             </li>
             <li><span class="main-text">Email:</span>
-              <%= userProject.email1 %>
+              <span class="display-text"><%= userProject.email1 %></span>
             </li>
             <% if ( userProject.email2) { %>
               <li><span class="main-text">Email:</span>
-                <%= userProject.email2 %>
+                <span class="display-text">  <%= userProject.email2 %></span>
               </li>
               <% } %>
                 <li><span class="main-text">Ciclo:</span>
-                  <%= userProject.ciclo %>
+                  <span class="display-text"> <%= userProject.ciclo %></span>
                 </li>
                 <% if ( userProject.calificado==='NO' ) { %>
                   <li style="color:red"><span class="main-text">Calificado:</span>
-                    <%= userProject.calificado %>
+                    <span class="display-text"> <%= userProject.calificado %></span>
                   </li>
                   <% } else { %>
                     <li style="color:green"><span class="main-text">Calificado:</span>
-                      <%= userProject.calificado %>
+                     <span class="display-text"> <%= userProject.calificado %> </span>
                     </li>
                     <% } %>
 
                       <% if ( userProject.nota !=='0' ) { %>
                         <li><span class="main-text">Nota:</span>
-                          <%= userProject.nota %>
+                          <span class="display-text"><%= userProject.nota %></span>
                         </li>
                         <li><span class="main-text">Observaciones:</span>
-                          <%= userProject.observaciones %>
+                          <span class="display-text"> <%= userProject.observaciones %></span>
                         </li>
                         <% } %>
 
                           <% if (date !=='' ) { %>
-                            <li><span class="main-text">Fecha de entrega:</span>
-                              <%= date %>
+                             <span class="display-text"></span>  <li><span class="main-text">Fecha de entrega:</span>
+                              <span class="display-text"><%= date %></span>    
                             </li>
                             <% } %>
           </ul>
