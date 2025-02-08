@@ -16,5 +16,5 @@ routerMainPage.post('/projects', upload, sendProject);
 routerMainPage.patch('/projects', upload, updateProject);
 
 routerMainPage.get('/grades', validateToken, renderRoutes('grades'));
-
+routerMainPage.get('/change_password', validateToken, renderRoutes('password'));
 
