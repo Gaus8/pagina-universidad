@@ -121,7 +121,8 @@ body {
 
 /*BOTONES*/
 .btn{
-    height: 50px;
+    height: 45px;
+    font-size: clamp(0.5rem, 2vw, 0.8rem);
     margin-top: 10px;
     border-radius: 5px;
     border: none;
