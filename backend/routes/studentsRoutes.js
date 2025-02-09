@@ -1,11 +1,12 @@
 import express from 'express';
-import { sendProject, updateProject, changePassword } from '../controllers/mainController.js';
+import { sendProject, updateProject} from '../controllers/mainController.js';
 import { upload } from '../database/dropbox.js';
 import { validateToken } from '../middleware/validateToken.js';
 import { renderRoutes } from '../controllers/renderRoutes.js';
+
 export const routerMainPage = express.Router();
 
-routerMainPage.get('/main', validateToken,renderRoutes('main'));
+routerMainPage.get('/main', validateToken, renderRoutes('main'));
 
 routerMainPage.get('/projects', validateToken, renderRoutes('projects'));
 
@@ -15,9 +16,3 @@ routerMainPage.patch('/projects', upload, updateProject);
 
 routerMainPage.get('/grades', validateToken, renderRoutes('grades'));
 
-routerMainPage.get('/change_password', validateToken, renderRoutes('password'));
-routerMainPage.patch('/change_password', validateToken, changePassword);
-
-routerMainPage.get('/recover_password', (req, res) => {
-  res.render('recover');
-});

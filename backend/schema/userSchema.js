@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -8,17 +8,29 @@ const userSchema = mongoose.Schema({
 
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true  
   },
 
   password: {
     type: String,
     required: true
   },
+
   role: {
     type: String,
     enum: ['student', 'teacher', 'admin'],
     default: 'student'
+  },
+
+  resetPasswordToken: {
+    type: String,
+    default: null
+  },
+
+  resetPasswordExpires: {
+    type: Date,
+    default: null
   }
 });
 
