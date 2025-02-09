@@ -5,9 +5,7 @@ import { validateToken } from '../middleware/validateToken.js';
 import { renderRoutes } from '../controllers/renderRoutes.js';
 export const routerMainPage = express.Router();
 
-routerMainPage.get('/main', validateToken, async (req, res) => {
-  res.render('main', { user: req.user });
-});
+routerMainPage.get('/main', validateToken,renderRoutes('main'));
 
 routerMainPage.get('/projects', validateToken, renderRoutes('projects'));
 
