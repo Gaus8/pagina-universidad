@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles_password.css">
+  <title>Proyectos de Gestión</title>
+</head>
+
+<body>
+  <div class="container">  
+    <div class="form-container">
+      <div class="image">
+        <img src="/img/escudo-color.png" alt="Escudo Universidad" width="15%" style="text-align: center;">
+      </div>
+      <form class="form">
+        <div class="container-password">
+          <span>Nueva contraseña</span>
+          <div class="input-button">
+            <input type="password" id="new-password" >
+            <button type="button" id="see-new-password"><ion-icon name="eye"></ion-icon></button>
+          </div>
+         
+        </div>
+        <div class="container-password">
+          <span>Confirmar nueva contraseña</span>
+          <div class="input-button">
+          <input type="password" id="confirm-password" >
+          <button type="button" id="see-confirm-password"><ion-icon name="eye"></ion-icon></button>
+          </div>
+          <div class="message-txt">
+            <p id="message"></p>
+          </div>
+          
+        </div>
+      </form>
+      <div class="buttons">
+        <button class="button-send-info" id="btn-cancel">cancelar</button>
+        <button class="button-send-info btn" id="btn-send" disabled>enviar</button>
+      </div>
+     
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="/scripts/script_password.js" type="module"></script>
+</body>
+
+</html>

@@ -6,6 +6,7 @@ const passwordValue = document.getElementById('password-registro');
 const nameText = document.getElementById('error-name');
 const emailText = document.getElementById('error-email');
 const passwordText = document.getElementById('error-password');
+
 const registerUser = async (url, data = {}) => {
   // RECIBIR DATOS
   try {

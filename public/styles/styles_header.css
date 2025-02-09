@@ -130,7 +130,7 @@
 }
 
 .dropdown-name h4 {
-  font-size: clamp(0.5rem, 1.5vw, 1rem); 
+  font-size: clamp(0.5rem, 1.5vw, 1.2rem); 
   margin-right: 10px;
 }
 
@@ -175,7 +175,8 @@
   background: var(--color-blanco);
   border-radius: 20px 2px 2px 20px;
   color: #202124;
-  font-size: clamp(0.5rem, 1.5vw, 0.8rem); 
+  font-size: clamp(0.5rem, 1.5vw, 0.9rem); 
+  font-weight: 600;
 }
 
 .dropdown-options-logout a {
@@ -187,7 +188,8 @@
   background: var(--color-blanco);
   border-radius: 2px 20px 20px 2px;
   color: #202124;
-  font-size: clamp(0.5rem, 1.5vw, 0.8rem); 
+  font-size: clamp(0.5rem, 1.5vw, 0.9rem); 
+  font-weight: 600;
 }
 
 .dropdown-options a:hover {
@@ -202,7 +204,8 @@
   font-size: 16px;
   font-style: italic;
   color: #707070;
-  font-size: clamp(0.5rem, 1.5vw, 0.8rem); 
+  font-size: clamp(0.5rem, 1.5vw, 0.9rem); 
+  font-weight: 600;
 }
 
 @media screen and (max-width: 1280px) {

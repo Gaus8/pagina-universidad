@@ -1,6 +1,5 @@
 import { z } from 'zod';
 
-
 const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[.!@#$%^&*])[\S]{8,16}$/;
 
 const userSchema = z.object({

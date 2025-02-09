@@ -1,6 +1,9 @@
 import { validateProjectPartial } from '../schema/validateProject.js';
 import { uploadFile, deleteFileByLink } from '../database/dropbox.js';
 import Projects from '../schema/projectSchema.js';
+import User from '../schema/userSchema.js';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 export const sendProject = async (req, res) => {
   await getProject(req, res);
@@ -96,8 +99,6 @@ async function uploadPdfAndSlides (req, res, ciclo) {
   };
 }
 
-
-
 export const updateProject = async (req, res) => {
   const { ciclo } = req.body;
   const validar = validateProjectPartial(req.body);
@@ -164,3 +165,35 @@ export const updateProject = async (req, res) => {
   }
 };
 
+export const changePassword = async (req, res) => {
+  const token = req.cookies.access_token;
+  const { password } = req.body;
+  console.log('PASSWORD:' + password);
+
+  try {
+    const data = jwt.verify(token, process.env.JWT_TOKEN);
+    const { email } = data;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: 'Usuario no encontrado' });
+    }
+    if (await bcrypt.compare(password, user.password)) {
+      return res.status(400).json({ message: 'La contraseña no puede ser igual' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const update = await User.updateOne(
+      { email }, { $set: { password: hashedPassword } }
+    );
+    if (update.modifiedCount > 0) {
+      return res.status(200).json({ message: 'Contaseña actualizada' });
+    } else {
+      return res.status(400).json({ message: 'Fallo al actualizar la contraseña' });
+    }
+  } catch (error) {
+    res.status(400).json({
+      message: 'Error!, Usuario no encontrado'
+    });
+  }
+};
