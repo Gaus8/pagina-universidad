@@ -18,18 +18,15 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
-
-body::before {
-  content: '';
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  z-index: -1;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/img/fondo_universidad.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -100;
 }
 
 .container {
@@ -54,32 +51,6 @@ body::before {
   border-radius: 5px;
 }
 
-.text {
-  margin-bottom: 10px;
-  width: 90%;
-  padding: 10px;
-}
-
-.text h2 {
-  font-size: clamp(0.7rem, 2vw, 1.2rem);
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.text span{
-  font-size: clamp(0.7rem, 2vw, 1rem);
-  font-weight: 600;
-}
-
-.text p{
-  font-weight: 600;
-  font-weight: 400;
-  color: #707070;
-  font-style: italic;
-  font-size: clamp(0.3rem, 2vw, 0.8rem);
-  font-weight: 600;
-}
-
 .form {
   width: 90%;
   display: flex;
@@ -88,8 +59,7 @@ body::before {
   align-items: center;
   padding: 5px;
 }
-
-.container-password {
+.container-email {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -97,65 +67,55 @@ body::before {
   flex-direction: column;
 }
 
-.container-password span {
+.container-email span {
   font-size: clamp(0.7rem, 2vw, 1rem);
   width: 100%;
   margin: 10px;
 }
 
-.input-button {
+.email {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.input-button input {
+.email input {
   font-size: clamp(0.5rem, 2vw, 0.8rem);
-  border: none;
+  border:none;
+  border-bottom: 1px solid green;
   outline: none;
+  padding: 10px;
   width: 100%;
   height: 100%;
   height: 30px;
   border-radius: 5px;
-
 }
 
-.input-button button {
-  border: none;
-  outline: none;
-  width: 5%;
-  height: 100%;
-  text-align: center;
-  background-color: inherit;
-  cursor: pointer;
-
-}
-
-.input-button button:hover {
-  background-color: #52e795;
-}
-
-.buttons {
-  margin-top: 20px;
+.button{
+  margin: 10px auto;
   width: 80%;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
-
 }
 
-.button-send-info {
-  margin: 10px;
-  width: 30%;
-  min-width: 30px;
-  text-transform: uppercase;
-  font-size: clamp(0.3rem, 2vw, 0.8rem);
-  height: 30px;
+.button-send {
+  height: 45px;
+  font-size: clamp(0.5rem, 2vw, 0.8rem);
+  margin-top: 10px;
   border-radius: 5px;
-  border: 1px solid #b49696;
+  border: none;
+  background-color:  linear-gradient(135deg, #D8E8F9, #FAF3E0);
+  color: var(--color-verde);
   cursor: pointer;
+}
 
+.button-send:hover {
+  width: 70%;
+  background-color: var(--color-verde);
+  color: var(--color-blanco);
+  transition: 0.5s ease-in-out;
 }
 
 .button-send-info:hover {
@@ -185,22 +145,23 @@ body::before {
   height: 100%;
 }
 
-.container-email {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+
 
  @media screen and (max-width:600px) {
   .form-container {
     min-width:80%;
+  }
+
+  .button-send{
+    height: 30px;
   }
 } 
 
 @media screen and (max-width:1000px) {
   .form-container {
     min-width:50%;
+  }
+  .button-send{
+    height: 30px;
   }
 } 
