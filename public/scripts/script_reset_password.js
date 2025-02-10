@@ -51,12 +51,23 @@ confirmPassword.addEventListener('input', checkPassword);
 buttonSend.addEventListener('click', async (e) => {
   e.preventDefault();
   const password = newPassword.value;
-  getData('/students/change_password', { password });
+
+  // Token Generado
+  const ulrParams = new URLSearchParams(window.location.search);
+  const token = ulrParams.get('token');
+
+  if (!token) {
+    message.textContent = 'Token de recuperación no válido';
+    message.style.color = 'red';
+    return;
+  }
+
+  getData('/reset_password', { password, token });
 });
 
 buttonCancel.addEventListener('click', (e) => {
   e.preventDefault();
-  window.location.href = '/students/main';
+  window.location.href = '/';
 });
 
 const getData = async (url, data = {}) => {
@@ -74,9 +85,16 @@ const getData = async (url, data = {}) => {
     if (response.ok) {
       message.textContent = 'Se ha actualizado la contraseña';
       message.style.color = 'green';
+      cleanFields();
     }
     message.textContent = responseData.message;
   } catch (error) {
-    console.log(error);
+    message.textContent = 'Error en la actualización';
+    message.style.color = 'red';
   }
+};
+
+function cleanFields () {
+  newPassword.value = '';
+  confirmPassword.value = '';
 };

@@ -2,11 +2,11 @@ import User from '../schema/userSchema.js';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
+import bcrypt from 'bcrypt';
 
 export const changePassword = async (req, res) => {
   const token = req.cookies.access_token;
   const { password } = req.body;
-  console.log('PASSWORD:' + password);
 
   try {
     const data = jwt.verify(token, process.env.JWT_TOKEN);
@@ -16,7 +16,7 @@ export const changePassword = async (req, res) => {
       return res.status(400).json({ message: 'Usuario no encontrado' });
     }
     if (await bcrypt.compare(password, user.password)) {
-      return res.status(400).json({ message: 'La contraseña no puede ser igual' });
+      return res.status(400).json({ message: 'La contraseña es igual a la anterior' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -36,7 +36,7 @@ export const changePassword = async (req, res) => {
   }
 };
 
-export const forgotPassword = async (req, res) => {
+export const sendEmailPassword = async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email });
 
@@ -49,9 +49,9 @@ export const forgotPassword = async (req, res) => {
   user.resetPasswordExpires = Date.now() + 3600000; // 1 hora
   await user.save();
 
-  
+
   const password = process.env.PASSWORD_EMAIL;
-  const emailUser = process.env.EMAIL; 
+  const emailUser = process.env.EMAIL;
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -67,14 +67,41 @@ export const forgotPassword = async (req, res) => {
     to: user.email,
     subject: 'Recuperación de contraseña',
     html: `<p>Para restablecer tu contraseña, haz clic en el siguiente enlace:</p>
-           <a href="http://localhost:3000/reset-password?token=${resetToken}">Restablecer contraseña</a>`
+           <a href="http://localhost:3001/reset_password?token=${resetToken}">Restablecer contraseña</a>`
   };
-
 
   try {
     await transporter.sendMail(mailOptions);
     res.json({ message: 'Correo enviado' });
   } catch (error) {
     res.status(500).json({ message: 'Error al enviar el correo' });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  const { password, token } = req.body;
+
+  try {
+    const user = await User.findOne({ resetPasswordToken: token });
+
+    if (!user) {
+      return res.status(400).json({ message: 'Token Invalido' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const update = await User.updateOne(
+      { resetPasswordToken: token }, { $set: { password: hashedPassword } }
+    );
+    user.resetPasswordToken = null;
+    user.resetPasswordExpires = null; 
+    await user.save();
+
+    if (update.modifiedCount > 0) {
+      return res.status(200).json({ message: 'Contaseña actualizada' });
+    } else {
+      return res.status(400).json({ message: 'Fallo al actualizar la contraseña' });
+    }
+  } catch (error) {
+    return res.status(400).json({ message: 'Fallo al actualizar la contraseña' });
   }
 };

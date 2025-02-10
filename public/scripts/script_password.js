@@ -51,7 +51,7 @@ confirmPassword.addEventListener('input', checkPassword);
 buttonSend.addEventListener('click', async (e) => {
   e.preventDefault();
   const password = newPassword.value;
-  getData('/students/change_password', { password });
+  getData('/change_password', { password });
 });
 
 buttonCancel.addEventListener('click', (e) => {
@@ -74,9 +74,16 @@ const getData = async (url, data = {}) => {
     if (response.ok) {
       message.textContent = 'Se ha actualizado la contraseña';
       message.style.color = 'green';
+      cleanFields();
     }
     message.textContent = responseData.message;
   } catch (error) {
     console.log(error);
   }
+};
+
+
+function cleanFields () {
+  newPassword.value = '';
+  confirmPassword.value = '';
 };

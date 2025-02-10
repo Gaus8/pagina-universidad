@@ -5,7 +5,7 @@ const message = document.getElementById('message');
 
 buttonEmail.addEventListener('click', () => {
   const email = inputEmail.value.trim();
-  sendEmail('/students/recover_password', { email });
+  sendEmail('/recover_password', { email });
 });
 
 const sendEmail = async (url, data = {}) => {
