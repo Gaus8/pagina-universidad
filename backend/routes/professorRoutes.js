@@ -5,3 +5,4 @@ import { renderRoutes } from '../controllers/renderRoutes.js';
 export const routerProffesor = express.Router();
 
 routerProffesor.get('/main', validateToken, renderRoutes('professor'));
+routerProffesor.get('/scores', validateToken, renderRoutes('scores'));

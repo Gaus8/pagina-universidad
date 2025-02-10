@@ -21,7 +21,7 @@ const loginUser = async (url, data = {}) => {
         window.location.href = '/students/main';
       }, 500);
     }
-    else if (responseData.role === 'teacher') {
+    else if (responseData.role === 'professor') {
       return setTimeout(() => {
         window.location.href = '/professor/main';
       }, 500);

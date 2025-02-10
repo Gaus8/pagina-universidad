@@ -16,7 +16,7 @@ const userSchema = z.object({
 
   password: z.string().regex(regex, { message: 'error3' }),
 
-  role: z.enum(['student', 'teacher', 'admin']).optional().default('student')
+  role: z.enum(['student', 'professor', 'admin']).optional().default('student')
 
 });
 

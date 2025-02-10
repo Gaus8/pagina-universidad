@@ -58,7 +58,7 @@ export const sendEmailPassword = async (req, res) => {
       pass: process.env.PASSWORD_EMAIL
     }
   });
-  const FRONTEND_URL = 'http://localhost:3001' || process.env.FRONTEND_URL;
+  const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3001';
 
   const mailOptions = {
     to: user.email,
