@@ -46,30 +46,29 @@ export const sendEmailPassword = async (req, res) => {
 
   const resetToken = crypto.randomBytes(32).toString('hex');
   user.resetPasswordToken = resetToken;
-  user.resetPasswordExpires = Date.now() + 3600000; // 1 hora
+  user.resetPasswordExpires = Date.now() + 1000000; 
   await user.save();
-
-
-  const password = process.env.PASSWORD_EMAIL;
-  const emailUser = process.env.EMAIL;
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465, // Usa 587 si prefieres STARTTLS
     secure: true, // true para 465, false para 587
     auth: {
-      user: emailUser,
-      pass: password
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD_EMAIL
     }
   });
+  const FRONTEND_URL = 'http://localhost:3001' || process.env.FRONTEND_URL;
 
   const mailOptions = {
     to: user.email,
     subject: 'Recuperación de contraseña',
-    html: `<p>Para restablecer tu contraseña, haz clic en el siguiente enlace:</p>
-           <a href="http://localhost:3001/reset_password?token=${resetToken}">Restablecer contraseña</a>`
+    html: `
+      <p>Para restablecer tu contraseña, haz clic en el siguiente enlace:</p>
+      <a href="${FRONTEND_URL}/reset_password?token=${resetToken}">Restablecer contraseña</a>
+      <p>Este enlace expirará en 10 minutos</p>
+    `
   };
-
   try {
     await transporter.sendMail(mailOptions);
     res.json({ message: 'Correo enviado' });
@@ -88,14 +87,18 @@ export const resetPassword = async (req, res) => {
       return res.status(400).json({ message: 'Token Invalido' });
     }
 
+    if (user.resetPasswordExpires < Date.now()) {
+      return res.status(400).json({ message: 'El token ha expirado, solicita uno nuevo' });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const update = await User.updateOne(
-      { resetPasswordToken: token }, { $set: { password: hashedPassword } }
+      { resetPasswordToken: token },
+      {
+        $set: { password: hashedPassword },
+        $unset: { resetPasswordToken: '', resetPasswordExpires: '' } // Elimina los campos del token
+      }
     );
-    user.resetPasswordToken = null;
-    user.resetPasswordExpires = null; 
-    await user.save();
-
     if (update.modifiedCount > 0) {
       return res.status(200).json({ message: 'Contaseña actualizada' });
     } else {
