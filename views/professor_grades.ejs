@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/styles_header.css">
-  <link rel="stylesheet" href="/styles/styles_main.css">
+  <link rel="stylesheet" href="/styles/styles_scores.css">
   <title>Proyectos de Gestión</title>
 </head>
 
@@ -29,8 +29,9 @@
           <div class="dropdown" id="dropdown-menu">
             <div class="dropdown-menu">
               <div class="dropdown-name">
-                  <h4>Hola, <%= user.name %></h4>
-                  <img src="/img/image_greeting.png" alt="greeting-image">              
+                <h4>Hola, <%= user.name %>
+                </h4>
+                <img src="/img/image_greeting.png" alt="greeting-image">
               </div>
               <div class="dropdown-options">
                 <div class="dropdown-options-password">
@@ -40,7 +41,9 @@
                   <a id="logout">Cerrar sesión</a>
                 </div>
               </div>
-              <p class="dropdown-email"><%= user.email%></p>
+              <p class="dropdown-email">
+                <%= user.email%>
+              </p>
             </div>
           </div>
         </div>
@@ -49,19 +52,26 @@
 
     <div class="form-container">
       <form class="ciclo">
-        <h3>Seleccione el ciclo a consultar</h3>
-        <div class="students-and-format">
+        <h3>Seleccione el ciclo para consultar proyectos</h3>
+        <div class="students-ciclo">
           <label for="input-radio-number1">1 </label>
-          <input type="radio" name="radio-students" id="input-radio-number1" value="1" checked required>
+          <input type="radio" name="radio-ciclo" id="input-radio-number1" value="1" checked required>
         </div>
-        <div class="students-and-format">
+        <div class="students-ciclo">
           <label for="input-radio-number2">2</label>
-          <input type="radio" name="radio-students"  id="input-radio-number2" value="2" required>
+          <input type="radio" name="radio-ciclo" id="input-radio-number2" value="2" required>
         </div>
-        <div class="students-and-format">
+        <div class="students-ciclo">
           <label for="input-radio-number2">3</label>
-          <input type="radio" name="radio-students"  id="input-radio-number3" value="3" required>
+          <input type="radio" name="radio-ciclo" id="input-radio-number3" value="3" required>
         </div>
-
+        <button class="button" id="btn-find-projects">CONSULTAR</button>
     </div>
+
+    <div class="js-texto"></div>
   </div>
+
+    <script src="/scripts/script_scores.js" type="module"></script>
+</body>
+
+</html>

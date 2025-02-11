@@ -14,5 +14,5 @@ routerMainPage.get('/projects', validateToken, renderRoutes('projects'));
 routerMainPage.post('/projects', upload, sendProject);
 routerMainPage.patch('/projects', upload, updateProject);
 
-routerMainPage.get('/grades', validateToken, renderRoutes('grades'));
+routerMainPage.get('/grades', validateToken, renderRoutes('students_grades'));
 

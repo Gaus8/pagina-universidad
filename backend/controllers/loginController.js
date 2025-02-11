@@ -43,7 +43,8 @@ const validateLogin = async (req, res) => {
   const token = jwt.sign({
     id: user.id,
     name: user.name,
-    email: user.email
+    email: user.email,
+    role: user.role
   }, process.env.JWT_TOKEN,
   {
     expiresIn: '1h'
