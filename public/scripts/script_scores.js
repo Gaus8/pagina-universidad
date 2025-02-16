@@ -1,5 +1,5 @@
 const buttonFindProjects = document.getElementById('btn-find-projects');
-const createDiv = document.querySelector('.js-texto');
+const createDiv = document.querySelector('.js-studens-projects');
 buttonFindProjects.addEventListener('click', (e) => {
   e.preventDefault();
   const ciclo = getSelectedRadio('radio-ciclo');
@@ -35,11 +35,11 @@ function createProjectDiv (projects) {
   projects.forEach(project => {
     html += `
     <p>${project.projectName}</p>
+    <a href="${project.fileUrl.replace('dl=0','dl1')}" target="_blanket"><img src="/img/imagen_pdf.png" width="30px"></a>
     <p>${project.email1}</p>
     <p>${project.email2 || ''}</p>
-    <p>${project.fileUrl}</p>
-    <p>${project._id}</p>
     <input type='text' id='input-grade-${project._id}'>
+    <textarea>Escribe</textarea>
     <button id='btn-${project._id}'>Calificar</button>
     `;
   });

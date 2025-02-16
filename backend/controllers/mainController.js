@@ -17,28 +17,29 @@ const getProject = async (req, res) => {
     });
   }
 
-  if (validar.data.email2) {
-    if (validar.data.email1 === validar.data.email2) {
+  const { email1, email2, projectName } = validar.data;
+
+  if (email2 !== null) {
+    if (email1 === email2) {
       return res.status(400).json({ message: 'Los correos no pueden ser los mismos' });
     }
   }
 
-  const email2 = validar.data.email2 ? validar.data.email2 : null;
+  const email2Exists = email2 || null;
 
-  const projectExists = await findProject(validar.data);
+  const projectExists = await findProject(email1, email2Exists);
   if (projectExists) {
     return res.status(400).json({ message: 'Este email ya registro un proyecto' });
   }
-
   const resultFiles = await uploadPdfAndSlides(req, res, ciclo);
   const fileUrl = resultFiles.pdf;
   const slidesUrl = resultFiles.slides;
 
 
   const newProject = {
-    projectName: validar.data.projectName.toUpperCase(),
-    email1: validar.data.email1,
-    email2,
+    projectName: projectName.toUpperCase(),
+    email1,
+    email2: email2Exists,
     fileUrl,
     slidesUrl,
     ciclo
@@ -63,18 +64,19 @@ async function saveProject (project) {
   }
 };
 
-async function findProject (project) {
-  const findProject = await Projects.findOne({
-    $or: [
-      { email1: project.email1 },
-      { email2: project.email2 }
-    ]
-  });
 
-  if (findProject) {
-    return true;
+async function findProject (email1, email2) {
+  if (email2 !== null) {
+    const query = {
+      $or: [{ email1 }, { email2 }, { email1: email2 }, { email2: email1 }]
+    };
+    return await Projects.exists(query);
+  } else {
+    const query = {
+      email1
+    };
+    return await Projects.exists(query);
   }
-  return false;
 }
 
 async function uploadPdfAndSlides (req, res, ciclo) {
