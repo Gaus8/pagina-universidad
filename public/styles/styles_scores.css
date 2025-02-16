@@ -98,20 +98,38 @@ body {
   transition: 0.5s ease-in-out;
 }
 
-
-.display-projects {
+.js-container-projects{
   width: 80%;
   margin: auto;
+  border: 2px solid rebeccapurple;
+} 
+
+.display-projects {
+  width: 100%;
   display: grid;
-  border: 2px solid red;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta columnas automáticamente */
   gap: 10px;
+  margin-bottom: 100px;
 }
 
-.js-studens-projects {
-  width: 30%;
-  border: 1px solid green;
+.js-students-projects {
+  width: 100%; /* Se ajusta al tamaño de la columna */
+  border: 2px solid rgb(5, 63, 22);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+.js-students-projects h5 {
+  font-size: clamp(0.3rem, 2vw, 1rem);
+}
+
+.js-project-not-found {
+  font-size: 50px;
 }

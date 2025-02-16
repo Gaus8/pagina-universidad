@@ -71,12 +71,7 @@ async function findProject (email1, email2) {
       $or: [{ email1 }, { email2 }, { email1: email2 }, { email2: email1 }]
     };
     return await Projects.exists(query);
-  } else {
-    const query = {
-      email1
-    };
-    return await Projects.exists(query);
-  }
+  } 
 }
 
 async function uploadPdfAndSlides (req, res, ciclo) {
