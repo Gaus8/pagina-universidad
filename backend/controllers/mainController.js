@@ -159,13 +159,4 @@ export const updateProject = async (req, res) => {
   }
 };
 
-export const findProjectsMongo = async (req, res) => {
-  try {
-    const { ciclo } = req.body;
-    const projects = await Projects.find({ ciclo }); // Filtrar proyectos por ciclo
-    res.status(200).json({ projects });
-  } catch (error) {
-    console.error('Error al obtener proyectos:', error);
-    res.status(500).json({ error: 'Error al obtener proyectos' });
-  }
-};
+
