@@ -4,6 +4,9 @@ import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 import bcrypt from 'bcrypt';
 
+
+// Cambiar contraseña de usuario desde la pagina
+
 export const changePassword = async (req, res) => {
   const token = req.cookies.access_token;
   const { password } = req.body;
@@ -36,17 +39,19 @@ export const changePassword = async (req, res) => {
   }
 };
 
+// Enviar email para restaurar contraseña
+
 export const sendEmailPassword = async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email });
-
+  console.log(email);
   if (!user) {
     return res.status(400).json({ message: 'Correo no registrado' });
   }
 
   const resetToken = crypto.randomBytes(32).toString('hex');
   user.resetPasswordToken = resetToken;
-  user.resetPasswordExpires = Date.now() + 1000000; 
+  user.resetPasswordExpires = Date.now() + 1000000;
   await user.save();
 
   const transporter = nodemailer.createTransport({
@@ -77,6 +82,7 @@ export const sendEmailPassword = async (req, res) => {
   }
 };
 
+// Restablecer contraseña a traves de un token
 export const resetPassword = async (req, res) => {
   const { password, token } = req.body;
 

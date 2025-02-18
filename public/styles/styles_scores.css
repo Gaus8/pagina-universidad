@@ -123,17 +123,11 @@ body {
   margin-bottom: 50px;
 }
 
-.js-display-projects:has(.js-students-projects:nth-child(1)) {
+.js-display-projects:has(.js-students-projects:nth-child(1):nth-child(1)) {
   display: flex;
   justify-content: center;
 }
 
-.js-display-projects:has(.js-students-projects:nth-last-child(2)) {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(300px, 1fr));
-  justify-content: center;
-  gap: 20px;
-}
 
 
 .js-students-projects {
