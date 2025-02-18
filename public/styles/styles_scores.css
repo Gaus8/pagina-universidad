@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
@@ -33,18 +33,21 @@ body {
   height: 100%;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: auto;
 }
 
 .form-container {
   background: linear-gradient(135deg, #D8E8F9, #FAF3E0);
-  width: 30%;
+  width: 35%;
+  max-width: 400px;
   margin: 50px auto;
   position: relative;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+  padding: 20px;
 }
 
 .ciclo {
@@ -54,6 +57,11 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 5px;
+}
+
+.ciclo h3 {
+  text-align: center;
+  font-size: clamp(0.5rem, 2vw, 1.4rem);
 }
 
 .students-ciclo{
@@ -78,7 +86,6 @@ body {
 .students-ciclo input{
  cursor: pointer;
  height: 30px;
- min-width: 2%;
 }
 
 .button {
@@ -90,6 +97,7 @@ body {
   background-color: linear-gradient(135deg, #D8E8F9, #FAF3E0);
   color: var(--color-verde);
   cursor: pointer;
+  padding: 10px 20px;
 }
 
 .button:hover {
@@ -116,45 +124,42 @@ body {
 .js-display-projects {
   width: 100%;
   display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta columnas automáticamente */
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-items: center;
   margin-bottom: 50px;
 }
 
-.js-display-projects:has(.js-students-projects:nth-child(1):nth-child(1)) {
-  display: flex;
-  justify-content: center;
-}
-
-
-
 .js-students-projects {
-  width: 100%; 
+  width: 100%;
   max-width: 350px;
-  height: 500px;
-  border: 2px solid rgb(5, 63, 22);
+  border: 2px solid #053f16;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   padding: 10px;
-  gap: 10px;
   border-radius: 8px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  gap: 10px;
 }
 
 .js-students-projects h5 {
- font-size: clamp(0.4rem,1vw, 1.3rem);
+ font-size: clamp(0.7rem,1vw, 1.3rem);
   font-weight: 600;
   text-align: center;
 }
 
-.js-students-email{
+
+.js-students-email, .js-students-grades {
   width: 90%;
   font-weight: 600;
   text-align: start;
 }
+
+.js-students-grades label, .js-students-email p {
+  font-size: clamp(0.8rem, 0.8vw, 1rem);
+}
+
 .js-students-email p {
   font-size: clamp(0.5rem, 0.8vw, 1rem);  
 }
@@ -218,4 +223,27 @@ body {
   background-color: var(--color-verde);
   color: var(--color-blanco);
   transition: 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+  .form-container {
+    width: 90%;
+  }
+  .js-display-projects {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .js-students-projects {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+ 
+  .js-display-projects {
+    gap: 10px;
+  }
+  .js-students-projects {
+    width: 100%;
+  }
 }
